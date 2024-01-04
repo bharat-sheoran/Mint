@@ -18,6 +18,7 @@ const allowCrossDomain = (req, res, next) => {
 }
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(allowCrossDomain);
 app.use(express.static("public"));
 
@@ -33,6 +34,13 @@ app.get("/", (req, res) => {
 app.get("/manage", async (req , res)=>{
     let data = await Manage.find({});
     res.send(data);
+})
+
+app.post("/manage/add" , async (req , res)=>{
+    let data = req.body;
+    const newData = new Manage(data);
+    const savedData = await newData.save();
+    res.send("Successfull Addition");
 })
 
 app.listen(port, () => {

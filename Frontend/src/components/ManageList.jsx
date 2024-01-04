@@ -12,6 +12,7 @@ export default function ManageList({ manage }) {
                         <th>Name</th>
                         <th>Used</th>
                         <th>Availaible</th>
+                        <th>Invested</th>
                     </tr>
                 </thead>
                 <tbody className='manage-tbody'>
@@ -22,6 +23,7 @@ export default function ManageList({ manage }) {
                             <td>{d.name}</td>
                             <td>{d.used}</td>
                             <td>{d.availaible}</td>
+                            <td>{d.invested}</td>
                         </tr>
                     ))}
                 </tbody>
