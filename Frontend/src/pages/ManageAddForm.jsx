@@ -1,5 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
+import { redirect } from "react-router-dom"
 
 export default function ManageAddForm() {
     let [formData, setFormData] = useState({
@@ -20,8 +21,7 @@ export default function ManageAddForm() {
 
     const handleSubmit = async (event)=>{
         event.preventDefault();
-        let res = await axios.post("http://localhost:8080/manage/add" , formData);
-        console.log(res);
+        await axios.post("http://localhost:8080/manage" , formData);
     }
 
     return (

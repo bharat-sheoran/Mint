@@ -1,6 +1,20 @@
+import axios from 'axios'
 import './ManageList.css'
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-export default function ManageList({ manage }) {
+
+export default function ManageList() {
+    const manages = useSelector((state)=> state.manages);
+    console.log(manages);
+
+    const handleDelete = async(id)=>{
+        let res = await axios.delete(`http://localhost:8080/manage/${id}`);
+        console.log(res);
+        this.setManage(()=>{
+            manage.filter((c) => (c.id !== id));
+        });
+    }
 
     return (
         <>
@@ -16,14 +30,15 @@ export default function ManageList({ manage }) {
                     </tr>
                 </thead>
                 <tbody className='manage-tbody'>
-                    {manage.map((d) => (
-                        <tr key={d._id}>
-                            <td>{d.date.toString().slice(0, 10)}</td>
-                            <td>{d.category}</td>
-                            <td>{d.name}</td>
-                            <td>{d.used}</td>
-                            <td>{d.availaible}</td>
-                            <td>{d.invested}</td>
+                    {manages.map((d) => (
+                        <tr key={d.id}>
+                            <td>{d.Date.slice(0 , 10)}</td>
+                            <td>{d.Category}</td>
+                            <td>{d.Name}</td>
+                            <td>{d.Used}</td>
+                            <td>{d.Availaible}</td>
+                            <td>{d.Invested}</td>
+                            <td><button onClick={()=>(handleDelete(d._id))}>Delete</button></td>
                         </tr>
                     ))}
                 </tbody>

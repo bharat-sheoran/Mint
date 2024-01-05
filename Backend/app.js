@@ -36,11 +36,17 @@ app.get("/manage", async (req , res)=>{
     res.send(data);
 })
 
-app.post("/manage/add" , async (req , res)=>{
+app.post("/manage" , async (req , res)=>{
     let data = req.body;
     const newData = new Manage(data);
     const savedData = await newData.save();
     res.send("Successfull Addition");
+})
+
+app.delete("/manage/:id", async (req , res)=>{
+    let {id} = req.params;
+    await Manage.findOneAndDelete({_id: id});
+    res.send("Deleted Successfully");
 })
 
 app.listen(port, () => {
