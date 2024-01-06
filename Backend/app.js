@@ -49,6 +49,12 @@ app.delete("/manage/:id", async (req , res)=>{
     res.send("Deleted Successfully");
 })
 
+app.put("/manage/:id", async (req , res)=>{
+    let {id} = req.params;
+    console.log(id);
+    res.send("Edited Successfully");
+})
+
 app.listen(port, () => {
     console.log(`App is listening at ${port}`);
 });
