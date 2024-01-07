@@ -3,11 +3,14 @@ import './ManageList.css'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { deleteManage } from '../features/manage/manageSlice';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function ManageList() {
     const manages = useSelector((state) => state.manages);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleDelete = async (id) => {
         await axios.delete(`http://localhost:8080/manage/${id}`);
@@ -37,9 +40,9 @@ export default function ManageList() {
                             <td>{d.Availaible}</td>
                             <td>{d.Invested}</td>
                             <td><button onClick={() => (handleDelete(d.id))}>Delete</button></td>
-                            <td><form action="http://localhost:5173/manage/edit">
-                                <button type='Submit'>Edit</button>
-                            </form>
+                            <td><Link to="/manage/edit" state={{id: d.id}} className='link'>
+                                Edit
+                            </Link>
                             </td>
                         </tr>
                     ))}

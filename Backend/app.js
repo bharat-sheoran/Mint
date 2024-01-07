@@ -51,7 +51,8 @@ app.delete("/manage/:id", async (req , res)=>{
 
 app.put("/manage/:id", async (req , res)=>{
     let {id} = req.params;
-    console.log(id);
+    let data = req.body;
+    await Manage.findByIdAndUpdate(id , data);
     res.send("Edited Successfully");
 })
 

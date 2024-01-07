@@ -1,17 +1,27 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
-export default function ManageEditForm(){
+export default function ManageEditForm(props){
     let manages = useSelector((state)=> state.manages);
-    console.log(manages);
+    const location = useLocation();
+    const id = location.state?.id;
+
+    let data;
+    manages.filter((d)=>{
+        if(d.id === id){
+            data = d;
+        }
+    })
 
     let [formData, setFormData] = useState({
-        date: "",
-        category: "Select",
-        name: "",
-        used: "",
-        availaible: "",
-        invested: ""
+        date: data.Date.slice(0,10),
+        category: data.Category,
+        name: data.Name,
+        used: data.Used,
+        availaible: data.Availaible,
+        invested: data.Invested
     })
 
     const handleFormData = (event)=>{
@@ -23,7 +33,7 @@ export default function ManageEditForm(){
 
     const handleSubmit = async (event)=>{
         event.preventDefault();
-        await axios.post("http://localhost:8080/manage" , formData);
+        let res = await axios.put(`http://localhost:8080/manage/${id}` , formData);
     }
 
     return (
@@ -31,7 +41,7 @@ export default function ManageEditForm(){
             <h3>This is Edit Form</h3>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="date">Date</label>
-                <input onChange={handleFormData} type="date" name="date" id="date" value={formData.date}/>
+                <input onChange={handleFormData} type="text" name="date" id="date" value={formData.date} disabled/>
 
                 <label htmlFor="category">Category</label>
                 <select onChange={handleFormData} name="category" id="category" value={formData.category}>
@@ -54,7 +64,7 @@ export default function ManageEditForm(){
                 <label htmlFor="invested">Invested</label>
                 <input onChange={handleFormData} type="text" name="invested" id="invested" placeholder="Invested" value={formData.invested}/>
 
-                <button type="Submit">Add</button>
+                <button type="Submit">Edit</button>
             </form>
         </>
     )
