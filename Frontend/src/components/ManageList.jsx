@@ -4,13 +4,11 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { deleteManage } from '../features/manage/manageSlice';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
 
 export default function ManageList() {
     const manages = useSelector((state) => state.manages);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const handleDelete = async (id) => {
         await axios.delete(`http://localhost:8080/manage/${id}`);

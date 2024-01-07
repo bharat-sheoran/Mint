@@ -3,6 +3,7 @@ const app = express();
 const port = 8080;
 const mongoose = require("mongoose");
 const Manage = require("./models/manage.js");
+const manageRouter = require("./routes/manages.js");
 
 
 
@@ -22,6 +23,8 @@ app.use(express.json());
 app.use(allowCrossDomain);
 app.use(express.static("public"));
 
+app.use("/manage" , manageRouter);
+
 let server = {
     ser: "Server is working fine",
     port: "At port 8080"
@@ -29,31 +32,6 @@ let server = {
 
 app.get("/", (req, res) => {
     res.send(server);
-})
-
-app.get("/manage", async (req , res)=>{
-    let data = await Manage.find({});
-    res.send(data);
-})
-
-app.post("/manage" , async (req , res)=>{
-    let data = req.body;
-    const newData = new Manage(data);
-    const savedData = await newData.save();
-    res.send("Successfull Addition");
-})
-
-app.delete("/manage/:id", async (req , res)=>{
-    let {id} = req.params;
-    await Manage.findOneAndDelete({_id: id});
-    res.send("Deleted Successfully");
-})
-
-app.put("/manage/:id", async (req , res)=>{
-    let {id} = req.params;
-    let data = req.body;
-    await Manage.findByIdAndUpdate(id , data);
-    res.send("Edited Successfully");
 })
 
 app.listen(port, () => {
