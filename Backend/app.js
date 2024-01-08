@@ -3,7 +3,7 @@ const app = express();
 const port = 8080;
 const mongoose = require("mongoose");
 const Manage = require("./models/manage.js");
-const manageRouter = require("./routes/manages.js");
+const manageRouter = require("./routes/manage.js");
 
 
 

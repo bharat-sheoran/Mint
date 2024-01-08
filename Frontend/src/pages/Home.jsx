@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import ManageNavBar from '../components/ManageNavBar';
 
 export default function Home() {
     const [res, setRes] = useState("");
@@ -10,11 +11,9 @@ export default function Home() {
     }
     return (
         <>
+            <ManageNavBar />
             <button onClick={getData}>Click this</button>
             <p>{res}</p>
-            <form action="http://localhost:5173/manage">
-                <button type='submit'>Manage</button>
-            </form>
         </>
     )
 }

@@ -1,0 +1,16 @@
+.logo{
+    font-family: 'Rubik Maps', system-ui;
+    font-size: x-large;
+}
+
+.left{
+    margin-left: 1rem;
+}
+
+.manage-navbar{
+    background-color: rgb(80, 80, 255);
+}
+
+.right{
+    margin-right: 1rem;
+}

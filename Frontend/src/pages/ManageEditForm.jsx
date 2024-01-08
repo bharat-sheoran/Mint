@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import EditForm from "../components/EditForm";
+import ManageNavBar from "../components/ManageNavBar";
 
 export default function ManageEditForm(props){
     let manages = useSelector((state)=> state.manages);
@@ -16,6 +17,7 @@ export default function ManageEditForm(props){
 
     return (
         <>
+            <ManageNavBar />
             <h3>This is Edit Form</h3>
             <EditForm data={data} id={id}/>
         </>
