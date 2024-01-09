@@ -17,15 +17,15 @@ const manageSchema = new Schema({
         enum: ['Needs', 'Wants', 'Investment', 'Needs&Wants']
     },
     used: {
-        type: String,
+        type: Number,
         required: true
     },
     availaible: {
-        type: String,
+        type: Number,
         required: true
     },
     invested: {
-        type: String,
+        type: Number,
         required: true
     }
 });
