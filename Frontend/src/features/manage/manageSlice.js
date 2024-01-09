@@ -23,8 +23,11 @@ export const manageSlice = createSlice({
         deleteManage: (state, action) => {
             state.manages = state.manages.filter((m) => m.id !== action.payload);
         },
+        deleteAll: (state, action) => {
+            return initialState;
+        }
     }
 })
 
-export const { addManage, deleteManage } = manageSlice.actions;
+export const { addManage, deleteManage, deleteAll } = manageSlice.actions;
 export default manageSlice.reducer;

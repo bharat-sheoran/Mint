@@ -1,7 +1,12 @@
 import { useState } from "react"
 import axios from "axios"
+import {useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux";
+import { addManage } from "../features/manage/manageSlice";
 
 export default function AddForm() {
+    let dispatch = useDispatch();
+    let navigate = useNavigate();
     let [formData, setFormData] = useState({
         date: "",
         category: "Select",
@@ -21,6 +26,8 @@ export default function AddForm() {
     const handleSubmit = async (event)=>{
         event.preventDefault();
         await axios.post("http://localhost:8080/manage" , formData);
+        dispatch(addManage(formData));
+        navigate('/manage');
     }
 
     return (

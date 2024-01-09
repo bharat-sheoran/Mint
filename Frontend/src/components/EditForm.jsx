@@ -1,7 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function EditForm({id , data}) {
+    let navigate = useNavigate();
 
     let [formData, setFormData] = useState({
         date: data.Date.slice(0,10),
@@ -21,7 +23,8 @@ export default function EditForm({id , data}) {
 
     const handleSubmit = async (event)=>{
         event.preventDefault();
-        let res = await axios.put(`http://localhost:8080/manage/${id}` , formData);
+        await axios.put(`http://localhost:8080/manage/${id}` , formData);
+        navigate('/manage');
     }
     return (
         <>

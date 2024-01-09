@@ -1,9 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react"
+import { useEffect, useState, useLayoutEffect } from "react"
 import ManageList from "../components/ManageList";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addManage } from "../features/manage/manageSlice";
 import ManageNavBar from "../components/ManageNavBar";
+import Button from "react-bootstrap/esm/Button";
+import ManageDownNavBar from "../components/ManageDownNavBar";
+import { deleteAll } from "../features/manage/manageSlice";
 
 export default function Manage() {
     const dispatch = useDispatch();
@@ -14,6 +17,7 @@ export default function Manage() {
             let arrData = data.data;
             arrData.map((manage) => (dispatch(addManage(manage))));
         }
+        dispatch(deleteAll());
         getData();
     },[]);
 
@@ -21,9 +25,7 @@ export default function Manage() {
     return (
         <>
             <ManageNavBar />
-            <form action="http://localhost:5173/manage/add">
-                <button>Add</button>
-            </form>
+            <ManageDownNavBar />
             <ManageList />
         </>
     )

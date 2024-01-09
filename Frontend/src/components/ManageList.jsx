@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { deleteManage } from '../features/manage/manageSlice';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function ManageList() {
@@ -37,9 +39,9 @@ export default function ManageList() {
                             <td>{d.Used}</td>
                             <td>{d.Availaible}</td>
                             <td>{d.Invested}</td>
-                            <td><button onClick={() => (handleDelete(d.id))}>Delete</button></td>
-                            <td><Link to="/manage/edit" state={{id: d.id}} className='link'>
-                                Edit
+                            <td><abbr title="Delete"><FontAwesomeIcon onClick={() => (handleDelete(d.id))} icon={faTrash} /></abbr></td>
+                            <td><Link to="/manage/edit" state={{ id: d.id }} className='link'>
+                                <abbr title="Edit"><FontAwesomeIcon icon={faPen} /></abbr>
                             </Link>
                             </td>
                         </tr>

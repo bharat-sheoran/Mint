@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 export default function ManageNavBar() {
     return (
         <>
-            <NavBar className='justify-content-between manage-navbar'>
+            <NavBar className='sticky-top justify-content-between manage-navbar'>
                 <div className="left">
                     <Link to={'/'} className='logo link'>MINT</Link>
                 </div>
