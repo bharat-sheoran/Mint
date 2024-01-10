@@ -1,5 +1,5 @@
 import axios from 'axios'
-import './ManageList.css'
+import './ManageListDebit.css'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { deleteManage } from '../features/manage/manageSlice';
@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
 
 
-export default function ManageList() {
+export default function ManageListDebit() {
     const manages = useSelector((state) => state.manages);
     const dispatch = useDispatch();
 
