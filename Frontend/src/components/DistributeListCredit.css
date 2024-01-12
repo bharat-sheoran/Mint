@@ -1,0 +1,21 @@
+
+.distribute-list{
+    min-width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.distribute-thead th{
+    background-color: gainsboro;
+    padding: 0.5rem 0 0.5rem 0;
+}
+
+.distribute-thead tr{
+    border-radius: 1rem;
+}
+
+.distribute-tbody td{
+    padding: 0.5rem 0 0 0;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}

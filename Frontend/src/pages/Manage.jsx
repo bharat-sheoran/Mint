@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState, useLayoutEffect } from "react"
 import ManageListDebit from "../components/ManageListDebit";
-import ManageListCredit from "../components/ManageListCredit";
+import DistributeListCredit from "../components/DistributeListCredit";
 import { useDispatch, useSelector } from "react-redux";
 import { addManage } from "../features/manage/manageSlice";
 import ManageNavBar from "../components/ManageNavBar";
@@ -31,7 +31,7 @@ export default function Manage() {
         <>
             <ManageNavBar />
             <ManageDownNavBar handleIsDebit={handleIsDebit} />
-            {isDebit ? <ManageListCredit /> : <ManageListDebit/>}
+            {isDebit ? <DistributeListCredit /> : <ManageListDebit/>}
         </>
     )
 }

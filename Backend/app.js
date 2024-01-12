@@ -4,6 +4,7 @@ const port = 8080;
 const mongoose = require("mongoose");
 const Manage = require("./models/manage.js");
 const manageRouter = require("./routes/manage.js");
+const distributeRouter = require("./routes/distribute.js");
 
 
 
@@ -24,6 +25,8 @@ app.use(allowCrossDomain);
 app.use(express.static("public"));
 
 app.use("/manage" , manageRouter);
+app.use("/distribute" , distributeRouter);
+
 
 let server = {
     ser: "Server is working fine",

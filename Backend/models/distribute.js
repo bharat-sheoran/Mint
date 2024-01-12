@@ -7,6 +7,10 @@ const distributeSchema = new Schema({
         type: Date,
         default: Date.now()
     },
+    name: {
+        type: String,
+        required: true
+    },
     amount: {
         type: Number,
         required: true
