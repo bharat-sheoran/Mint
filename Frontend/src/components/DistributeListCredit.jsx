@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './DistributeListCredit.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
@@ -8,9 +8,17 @@ import { Link } from 'react-router-dom';
 export default function ManageListCredit(){
     let [distribute, setDistribute] = useState([]);
 
-    async function getDistribute(){
-        let res = await axios.get("http://localhost:8080/distribute");
-        setDistribute(res.data);
+    useEffect(() => {
+        async function getData(){
+            let res = await axios.get("http://localhost:8080/distribute");
+            console.log(res.data);
+            setDistribute(res.data);
+        }
+        getData();
+    },[]);
+
+    const handleDelete = async (id) => {
+        await axios.delete(`http://localhost:8080/distribute/${id}`);
     }
 
     return (
@@ -35,7 +43,7 @@ export default function ManageListCredit(){
                             <td>{d.needs}</td>
                             <td>{d.wants}</td>
                             <td>{d.investment}</td>
-                            <td><abbr title="Delete"><FontAwesomeIcon onClick={() => (handleDelete(d.id))} icon={faTrash} /></abbr></td>
+                            <td><abbr title="Delete"><FontAwesomeIcon onClick={() => (handleDelete(d._id))} icon={faTrash} /></abbr></td>
                             <td><Link to="/manage/edit" state={{ id: d.id }} className='link'>
                                 <abbr title="Edit"><FontAwesomeIcon icon={faPen} /></abbr>
                             </Link>
@@ -44,7 +52,6 @@ export default function ManageListCredit(){
                     ))}
                 </tbody>
             </table>
-            <button onClick={getDistribute}>click</button>
         </>
     )
 }
