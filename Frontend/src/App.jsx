@@ -13,6 +13,7 @@ import DistributeAddForm from './pages/DistrbuteAddForm';
 
 
 function App() {
+  localStorage.setItem("isDebit" , false);
 
   return (
     <>

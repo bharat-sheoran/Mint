@@ -6,9 +6,11 @@ export default function ManageDownNavBar({ handleIsDebit, isDebit }) {
 
     const handleCredit = ()=>{
         handleIsDebit(true);
+        localStorage.setItem("isDebit" , true);
     }
     const handleDebit = ()=>{
         handleIsDebit(false);
+        localStorage.setItem("isDebit" , false);
     }
 
     return (

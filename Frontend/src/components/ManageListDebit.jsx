@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { deleteManage } from '../features/manage/manageSlice';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function ManageListDebit() {

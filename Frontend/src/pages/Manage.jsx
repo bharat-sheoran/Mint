@@ -5,7 +5,6 @@ import DistributeListCredit from "../components/DistributeListCredit";
 import { useDispatch, useSelector } from "react-redux";
 import { addManage } from "../features/manage/manageSlice";
 import ManageNavBar from "../components/ManageNavBar";
-import Button from "react-bootstrap/esm/Button";
 import ManageDownNavBar from "../components/ManageDownNavBar";
 import { deleteAllManage } from "../features/manage/manageSlice";
 import { addDistribute } from "../features/distribute/distributeSlice";
@@ -13,7 +12,7 @@ import { deleteAllDistribute } from "../features/distribute/distributeSlice";
 
 export default function Manage() {
     const dispatch = useDispatch();
-    const [isDebit , setIsDebit] = useState(false);
+    const [isDebit , setIsDebit] = useState(localStorage.getItem("isDebit"));
 
     useEffect(() => {
         async function getData() {
