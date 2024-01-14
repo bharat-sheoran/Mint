@@ -39,7 +39,7 @@ export default function DistributeListCredit(){
                             <td>{d.Needs}</td>
                             <td>{d.Wants}</td>
                             <td>{d.Investment}</td>
-                            <td><abbr title="Delete"><FontAwesomeIcon onClick={() => (handleDelete(d._id))} icon={faTrash} /></abbr></td>
+                            <td><abbr title="Delete"><FontAwesomeIcon onClick={() => (handleDelete(d.id))} icon={faTrash} /></abbr></td>
                             <td><Link to="/distribute/edit" state={{ id: d.id }} className='link'>
                                 <abbr title="Edit"><FontAwesomeIcon icon={faPen} /></abbr>
                             </Link>

@@ -5,15 +5,23 @@ module.exports.getDistribute = async (req , res)=>{
     res.send(data);
 }
 
+module.exports.addDistribute = async (req , res)=>{
+    let data = req.body;
+    const newData = new Distribute(data);
+    await newData.save();
+    res.send("Successfull Addition");
+}
+
 module.exports.deleteDistribute = async (req , res)=>{
     let {id} = req.params;
-    let result = await Distribute.findOneAndDelete({_id: id});
+    await Distribute.findOneAndDelete({_id: id});
     res.send("Deleted Successfully");
 }
 
 module.exports.editDistribute = async (req ,res)=>{
     let {id} = req.params;
     let data = req.body;
-    await Manage.findByIdAndUpdate(id , data);
+    console.log(id , data);
+    await Distribute.findByIdAndUpdate(id , data);
     res.send("Edited Successfully");
 }

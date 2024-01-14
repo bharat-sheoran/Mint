@@ -9,6 +9,8 @@ import DistributeEditForm from './pages/DistributeEditForm';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import ManageEditForm from './pages/ManageEditForm';
+import DistributeAddForm from './pages/DistrbuteAddForm';
+
 
 function App() {
 
@@ -23,6 +25,7 @@ function App() {
               <Route path='/manage/add' element={<ManageAddForm />} />
               <Route path='/manage/edit' element={<ManageEditForm />} />
               <Route path='/distribute/edit' element={<DistributeEditForm />} />
+              <Route path='/distribute/add' element={<DistributeAddForm />} />
             </Routes>
           </BrowserRouter>
       </Provider>

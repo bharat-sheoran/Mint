@@ -2,7 +2,7 @@ import NavBar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 import './ManageDownNav.css'
 
-export default function ManageDownNavBar({ handleIsDebit }) {
+export default function ManageDownNavBar({ handleIsDebit, isDebit }) {
 
     const handleCredit = ()=>{
         handleIsDebit(true);
@@ -19,9 +19,11 @@ export default function ManageDownNavBar({ handleIsDebit }) {
                     <button onClick={handleCredit}>Credit</button>
                 </div>
                 <div className="right">
-                    <Link to="/manage/add" className='add-button'>
+                    {isDebit?<Link to="/distribute/add" className='add-button'>
                         Add
-                    </Link>
+                    </Link>:<Link to="/manage/add" className='add-button'>
+                        Add
+                    </Link>}
                 </div>
             </NavBar>
         </>
