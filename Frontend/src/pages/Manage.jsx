@@ -7,7 +7,9 @@ import { addManage } from "../features/manage/manageSlice";
 import ManageNavBar from "../components/ManageNavBar";
 import Button from "react-bootstrap/esm/Button";
 import ManageDownNavBar from "../components/ManageDownNavBar";
-import { deleteAll } from "../features/manage/manageSlice";
+import { deleteAllManage } from "../features/manage/manageSlice";
+import { addDistribute } from "../features/distribute/distributeSlice";
+import { deleteAllDistribute } from "../features/distribute/distributeSlice";
 
 export default function Manage() {
     const dispatch = useDispatch();
@@ -16,10 +18,14 @@ export default function Manage() {
     useEffect(() => {
         async function getData() {
             let data = await axios.get("http://localhost:8080/manage");
-            let arrData = data.data;
-            arrData.map((manage) => (dispatch(addManage(manage))));
+            let res = await axios.get("http://localhost:8080/distribute");
+            let manageData = data.data;
+            let distributeData = res.data;
+            manageData.map((manage) => (dispatch(addManage(manage))));
+            distributeData.map((distribute) => (dispatch(addDistribute(distribute))));
         }
-        dispatch(deleteAll());
+        dispatch(deleteAllManage());
+        dispatch(deleteAllDistribute());
         getData();
     },[]);
 

@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Router } from 'react-router-dom';
 import Home from './pages/Home';
 import Manage from './pages/Manage';
 import ManageAddForm from './pages/ManageAddForm';
+import DistributeEditForm from './pages/DistributeEditForm';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import ManageEditForm from './pages/ManageEditForm';
@@ -21,6 +22,7 @@ function App() {
               <Route path='/manage' element={<Manage />} />
               <Route path='/manage/add' element={<ManageAddForm />} />
               <Route path='/manage/edit' element={<ManageEditForm />} />
+              <Route path='/distribute/edit' element={<DistributeEditForm />} />
             </Routes>
           </BrowserRouter>
       </Provider>

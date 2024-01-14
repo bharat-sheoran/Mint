@@ -4,21 +4,17 @@ import './DistributeListCredit.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { deleteDistribute } from '../features/distribute/distributeSlice';
 
-export default function ManageListCredit(){
-    let [distribute, setDistribute] = useState([]);
-
-    useEffect(() => {
-        async function getData(){
-            let res = await axios.get("http://localhost:8080/distribute");
-            console.log(res.data);
-            setDistribute(res.data);
-        }
-        getData();
-    },[]);
+export default function DistributeListCredit(){
+    const distribute = useSelector((state)=> state.distribute.distribute);
+    const dispatch = useDispatch();
 
     const handleDelete = async (id) => {
         await axios.delete(`http://localhost:8080/distribute/${id}`);
+        dispatch(deleteDistribute(id));
     }
 
     return (
@@ -36,15 +32,15 @@ export default function ManageListCredit(){
                 </thead>
                 <tbody className='distribute-tbody'>
                     {distribute.map((d) => (
-                        <tr key={d._id}>
-                            <td>{d.date.slice(0, 10)}</td>
-                            <td>{d.amount}</td>
-                            <td>{d.name}</td>
-                            <td>{d.needs}</td>
-                            <td>{d.wants}</td>
-                            <td>{d.investment}</td>
+                        <tr key={d.id}>
+                            <td>{d.Date.slice(0,10)}</td>
+                            <td>{d.Name}</td>
+                            <td>{d.Amount}</td>
+                            <td>{d.Needs}</td>
+                            <td>{d.Wants}</td>
+                            <td>{d.Investment}</td>
                             <td><abbr title="Delete"><FontAwesomeIcon onClick={() => (handleDelete(d._id))} icon={faTrash} /></abbr></td>
-                            <td><Link to="/manage/edit" state={{ id: d.id }} className='link'>
+                            <td><Link to="/distribute/edit" state={{ id: d.id }} className='link'>
                                 <abbr title="Edit"><FontAwesomeIcon icon={faPen} /></abbr>
                             </Link>
                             </td>

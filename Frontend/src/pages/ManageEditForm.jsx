@@ -4,7 +4,7 @@ import EditForm from "../components/EditForm";
 import ManageNavBar from "../components/ManageNavBar";
 
 export default function ManageEditForm(props){
-    let manages = useSelector((state)=> state.manages);
+    let manages = useSelector((state)=> state.manage.manages);
     const location = useLocation();
     const id = location.state?.id;
 

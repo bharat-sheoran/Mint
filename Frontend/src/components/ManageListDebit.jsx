@@ -9,7 +9,7 @@ import { faEnvelope, faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function ManageListDebit() {
-    const manages = useSelector((state) => state.manages);
+    const manages = useSelector((state) => state.manage.manages);
     const dispatch = useDispatch();
 
     const handleDelete = async (id) => {
