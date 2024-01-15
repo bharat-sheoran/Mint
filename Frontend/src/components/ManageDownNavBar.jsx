@@ -1,5 +1,4 @@
 import NavBar from 'react-bootstrap/Navbar'
-import { Link } from 'react-router-dom'
 import './ManageDownNav.css'
 
 export default function ManageDownNavBar({ handleIsDebit, isDebit }) {
@@ -16,12 +15,12 @@ export default function ManageDownNavBar({ handleIsDebit, isDebit }) {
     return (
         <>
             <NavBar className='justify-content-between manage-down-navbar'>
-                <div className="left">
+                <div className="left-down-navbar">
                     
                 </div>
-                <div className="right">
-                    <button onClick={handleDebit}>Debit</button>
-                    <button onClick={handleCredit}>Credit</button>
+                <div className="right-down-navbar">
+                    <a className={`debit ${isDebit?"":"debit-active"}`} onClick={handleDebit}>Debit</a>
+                    <a className={`credit ${isDebit?"credit-active":""}`} onClick={handleCredit}>Credit</a>
                 </div>
             </NavBar>
         </>

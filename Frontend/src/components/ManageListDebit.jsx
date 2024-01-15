@@ -28,6 +28,8 @@ export default function ManageListDebit() {
                         <th>Used</th>
                         <th>Availaible</th>
                         <th>Invested</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody className='manage-tbody'>

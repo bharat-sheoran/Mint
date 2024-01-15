@@ -5,3 +5,15 @@
 .link:hover{
     color: black;
 }
+
+.nav-manage-button{
+    display: flex;
+    height: 100%;
+    line-height: 3rem;
+    padding: 0 0.5rem 0 0.5rem;
+}
+
+.nav-manage-button-active{
+    background-color: white;
+    border-radius: 6px 6px 0 0;
+}

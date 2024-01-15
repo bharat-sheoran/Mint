@@ -6,7 +6,7 @@ import './ManageNavBar.css';
 import NavManageButton from './NavManageButton';
 import { Link } from 'react-router-dom';
 
-export default function ManageNavBar() {
+export default function ManageNavBar({activeState}) {
     return (
         <>
             <NavBar className='sticky-top justify-content-between manage-navbar'>
@@ -14,7 +14,7 @@ export default function ManageNavBar() {
                     <Link to={'/'} className='logo link'>MINT</Link>
                 </div>
                 <div className="right">
-                    <NavManageButton />
+                    <NavManageButton activeState={activeState}/>
                 </div>
             </NavBar>
         </>

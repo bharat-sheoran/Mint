@@ -34,7 +34,7 @@ export default function Manage() {
 
     return (
         <>
-            <ManageNavBar />
+            <ManageNavBar activeState={"Manage"}/>
             <ManageDownNavBar handleIsDebit={handleIsDebit} isDebit={isDebit}/>
             {isDebit ? <DistributeListCredit /> : <ManageListDebit/>}
         </>

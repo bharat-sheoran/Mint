@@ -1,7 +1,45 @@
-.debit-button{
+.right-down-navbar{
     margin-right: 1rem;
 }
 
-.credit-button{
-    margin-right: 1rem;
+.right-down-navbar{
+    display: flex;
+    height: 100%;
+}
+
+.right-down-navbar .debit{
+    padding: 0 1rem 0 1rem;
+    line-height: 2.5rem;
+}
+
+.right-down-navbar .credit{
+    padding: 0 1rem 0 1rem;
+    line-height: 2.5rem;
+}
+
+.right-down-navbar .debit:hover{
+    cursor: pointer;
+    color: black;
+}
+
+.right-down-navbar .credit:hover{
+    cursor: pointer;
+    color: black;
+}
+
+.debit-active{
+    background-color: gainsboro;
+    color: black;
+    border-radius: 6px 6px 0 0;
+}
+
+.credit-active{
+    background-color: gainsboro;
+    color: black;
+    border-radius: 6px 6px 0 0;
+}
+
+.manage-down-navbar{
+    padding: 0;
+    height: 2.5rem;
 }

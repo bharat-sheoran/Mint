@@ -27,7 +27,14 @@ export default function AddForm() {
         event.preventDefault();
         await axios.post("http://localhost:8080/manage", formData);
         dispatch(addManage(formData));
-        navigate('/manage');
+        setFormData({
+            date: "",
+            category: "Select",
+            name: "",
+            used: "",
+            availaible: "",
+            invested: ""
+        });
     }
 
     return (

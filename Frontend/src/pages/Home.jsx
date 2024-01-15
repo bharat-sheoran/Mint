@@ -11,7 +11,7 @@ export default function Home() {
     }
     return (
         <>
-            <ManageNavBar />
+            <ManageNavBar activeState={"Home"}/>
             <button onClick={getData}>Click this</button>
             <p>{res}</p>
         </>

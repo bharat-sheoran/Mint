@@ -28,6 +28,8 @@ export default function DistributeListCredit(){
                         <th>Needs</th>
                         <th>Wants</th>
                         <th>Investment</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody className='distribute-tbody'>

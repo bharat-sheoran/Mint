@@ -27,7 +27,14 @@ export default function AddFormCredit() {
         event.preventDefault();
         await axios.post("http://localhost:8080/distribute", formData);
         dispatch(addDistribute(formData));
-        navigate('/manage');
+        setFormData({
+            date: "",
+            name: "",
+            amount: "",
+            needs: "",
+            wants: "",
+            investment: ""
+        });
     }
 
     return (
