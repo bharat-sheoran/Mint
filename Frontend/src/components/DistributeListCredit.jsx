@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { deleteDistribute } from '../features/distribute/distributeSlice';
+import AddFormCredit from './AddFormCredit';
 
 export default function DistributeListCredit(){
     const distribute = useSelector((state)=> state.distribute.distribute);
@@ -30,6 +31,7 @@ export default function DistributeListCredit(){
                     </tr>
                 </thead>
                 <tbody className='distribute-tbody'>
+                    <AddFormCredit />
                     {distribute.map((d) => (
                         <tr key={d.id}>
                             <td>{d.Date.slice(0,10)}</td>

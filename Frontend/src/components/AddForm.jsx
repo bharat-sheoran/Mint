@@ -1,6 +1,6 @@
 import { useState } from "react"
 import axios from "axios"
-import {useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux";
 import { addManage } from "../features/manage/manageSlice";
 
@@ -16,47 +16,48 @@ export default function AddForm() {
         invested: ""
     })
 
-    const handleFormData = (event)=>{
-        setFormData((currData)=>{
+    const handleFormData = (event) => {
+        setFormData((currData) => {
             currData[event.target.name] = event.target.value;
-            return {...currData};
+            return { ...currData };
         })
     }
 
-    const handleSubmit = async (event)=>{
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        await axios.post("http://localhost:8080/manage" , formData);
+        await axios.post("http://localhost:8080/manage", formData);
         dispatch(addManage(formData));
         navigate('/manage');
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="date">Date</label>
-            <input onChange={handleFormData} type="date" name="date" id="date" value={formData.date} />
+        <tr>
+            <td>
+                <input onChange={handleFormData} type="date" name="date" id="date" value={formData.date} /></td>
 
-            <label htmlFor="category">Category</label>
-            <select onChange={handleFormData} name="category" id="category" value={formData.category}>
-                <option value="">Select</option>
-                <option value="Needs">Needs</option>
-                <option value="Wants">Wants</option>
-                <option value="Investment">Investment</option>
-                <option value="Needs&Wants">Needs&Wants</option>
-            </select>
+            <td>
+                <select onChange={handleFormData} name="category" id="category" value={formData.category}>
+                    <option value="">Select</option>
+                    <option value="Needs">Needs</option>
+                    <option value="Wants">Wants</option>
+                    <option value="Investment">Investment</option>
+                    <option value="Needs&Wants">Needs&Wants</option>
+                </select></td>
 
-            <label htmlFor="name">Name</label>
-            <input onChange={handleFormData} type="text" name="name" id="name" placeholder="Expense" value={formData.name} />
+            <td>
+                <input onChange={handleFormData} type="text" name="name" id="name" placeholder="Expense" value={formData.name} /></td>
 
-            <label htmlFor="used">Used</label>
-            <input onChange={handleFormData} type="text" name="used" id="used" placeholder="Used" value={formData.used} />
+            <td>
+                <input onChange={handleFormData} type="text" name="used" id="used" placeholder="Used" value={formData.used} /></td>
 
-            <label htmlFor="availaible">Availaible</label>
-            <input onChange={handleFormData} type="text" name="availaible" id="availaible" placeholder="Availaible" value={formData.availaible} />
+            <td>
+                <input onChange={handleFormData} type="text" name="availaible" id="availaible" placeholder="Availaible" value={formData.availaible} /></td>
 
-            <label htmlFor="invested">Invested</label>
-            <input onChange={handleFormData} type="text" name="invested" id="invested" placeholder="Invested" value={formData.invested} />
+            <td>
+                <input onChange={handleFormData} type="text" name="invested" id="invested" placeholder="Invested" value={formData.invested} /></td>
 
-            <button type="Submit">Add</button>
-        </form>
+            <td><button onClick={handleSubmit}>Add</button></td>
+
+        </tr>
     )
 }

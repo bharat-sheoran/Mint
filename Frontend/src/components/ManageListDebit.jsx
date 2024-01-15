@@ -6,7 +6,7 @@ import { deleteManage } from '../features/manage/manageSlice';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
-
+import AddForm from './AddForm';
 
 export default function ManageListDebit() {
     const manages = useSelector((state) => state.manage.manages);
@@ -31,6 +31,7 @@ export default function ManageListDebit() {
                     </tr>
                 </thead>
                 <tbody className='manage-tbody'>
+                    <AddForm/>
                     {manages.map((d) => (
                         <tr key={d.id}>
                             <td>{d.Date.slice(0, 10)}</td>

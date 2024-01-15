@@ -23,10 +23,8 @@ function App() {
               <Route index element={<Home />} />
               <Route path='/home' element={<Home />} />
               <Route path='/manage' element={<Manage />} />
-              <Route path='/manage/add' element={<ManageAddForm />} />
               <Route path='/manage/edit' element={<ManageEditForm />} />
               <Route path='/distribute/edit' element={<DistributeEditForm />} />
-              <Route path='/distribute/add' element={<DistributeAddForm />} />
             </Routes>
           </BrowserRouter>
       </Provider>
