@@ -3,10 +3,10 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux";
 import { addManage } from "../features/manage/manageSlice";
+import "./AddForm.css";
 
 export default function AddForm() {
     let dispatch = useDispatch();
-    let navigate = useNavigate();
     let [formData, setFormData] = useState({
         date: "",
         category: "Select",
@@ -63,7 +63,7 @@ export default function AddForm() {
             <td>
                 <input onChange={handleFormData} type="text" name="invested" id="invested" placeholder="Invested" value={formData.invested} /></td>
 
-            <td><button onClick={handleSubmit}>Add</button></td>
+            <td><button className="add" onClick={handleSubmit}>Add</button></td>
 
         </tr>
     )

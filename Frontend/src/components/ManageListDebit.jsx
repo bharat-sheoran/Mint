@@ -42,9 +42,9 @@ export default function ManageListDebit() {
                             <td>{d.Used}</td>
                             <td>{d.Availaible}</td>
                             <td>{d.Invested}</td>
-                            <td><abbr title="Delete"><FontAwesomeIcon onClick={() => (handleDelete(d.id))} icon={faTrash} /></abbr></td>
+                            <td><abbr title="Delete"><FontAwesomeIcon className='delete' onClick={() => (handleDelete(d.id))} icon={faTrash} /></abbr></td>
                             <td><Link to="/manage/edit" state={{ id: d.id }} className='link'>
-                                <abbr title="Edit"><FontAwesomeIcon icon={faPen} /></abbr>
+                                <abbr title="Edit"><FontAwesomeIcon className='edit' icon={faPen} /></abbr>
                             </Link>
                             </td>
                         </tr>

@@ -1,5 +1,6 @@
 .right-down-navbar{
     margin-right: 1rem;
+    margin-top: 5px;
 }
 
 .right-down-navbar{
@@ -28,13 +29,13 @@
 }
 
 .debit-active{
-    background-color: gainsboro;
+    background-color: rgb(173, 182, 233);
     color: black;
     border-radius: 6px 6px 0 0;
 }
 
 .credit-active{
-    background-color: gainsboro;
+    background-color: rgb(173, 182, 233);
     color: black;
     border-radius: 6px 6px 0 0;
 }

@@ -9,8 +9,6 @@ import ManageEditForm from './pages/ManageEditForm';
 
 
 function App() {
-  localStorage.setItem("isDebit" , false);
-
   return (
     <>
       <Provider store={store}>

@@ -1,0 +1,22 @@
+td input{
+    text-align: center;
+    border: none;
+}
+
+td input:active{
+    text-align: center;
+    border: none;
+}
+
+td select{
+    text-align: center;
+    border: none;
+}
+
+.add{
+    border: none;
+    background-color: rgb(80, 80, 255);
+    border-radius: 5px;
+    color: white;
+    margin-bottom: 0.2rem;
+}

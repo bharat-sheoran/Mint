@@ -50,19 +50,19 @@ export default function AddFormCredit() {
             </td>
 
             <td>
-                <input onChange={handleFormData} type="text" name="needs" id="needs" placeholder="needs" value={formData.needs} />
+                <input onChange={handleFormData} type="text" name="needs" id="needs" placeholder="needs" value={formData.needs = formData.amount/2} />
             </td>
 
             <td>
-                <input onChange={handleFormData} type="text" name="wants" id="wants" placeholder="wants" value={formData.wants} />
+                <input onChange={handleFormData} type="text" name="wants" id="wants" placeholder="wants" value={formData.wants = formData.amount*3/10} />
             </td>
 
             <td>
-                <input onChange={handleFormData} type="text" name="investment" id="investment" placeholder="Investment" value={formData.investment} />
+                <input onChange={handleFormData} type="text" name="investment" id="investment" placeholder="Investment" value={formData.investment = formData.amount/5} />
             </td>
 
             <td>
-                <button onClick={handleSubmit}>Add</button>
+                <button className="add" onClick={handleSubmit}>Add</button>
             </td>
         </tr>
     )
