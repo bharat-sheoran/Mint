@@ -1,7 +1,7 @@
 const Distribute = require("../models/distribute.js");
 
 module.exports.getDistribute = async (req , res)=>{
-    let data = await Distribute.find({});
+    let data = await Distribute.find({}).sort({date: 1});
     res.send(data);
 }
 

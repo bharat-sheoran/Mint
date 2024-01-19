@@ -1,7 +1,7 @@
 const Manage = require("../models/manage.js");
 
 module.exports.getManage = async (req , res)=>{
-    let data = await Manage.find({});
+    let data = await Manage.find({}).sort({date: 1});
     res.send(data);
 }
 

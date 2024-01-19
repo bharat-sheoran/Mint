@@ -18,7 +18,7 @@ export const manageSlice = createSlice({
                 Availaible: action.payload.availaible,
                 Invested: action.payload.invested
             }
-            state.manages.push(newManage);
+            state.manages.unshift(newManage);
         },
         deleteManage: (state, action) => {
             state.manages = state.manages.filter((m) => m.id !== action.payload);

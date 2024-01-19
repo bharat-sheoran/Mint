@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const initialState = {
     distribute: [],
 }
@@ -18,14 +19,14 @@ export const distributeSlice = createSlice({
                 Wants: action.payload.wants,
                 Investment: action.payload.investment
             }
-            state.distribute.push(newDistribute);
+            state.distribute.unshift(newDistribute);
         },
         deleteDistribute: (state, action) => {
             state.distribute = state.distribute.filter((d) => d.id !== action.payload);
         },
         deleteAllDistribute: (state, action) => {
             return initialState;
-        }
+        },
     }
 })
 

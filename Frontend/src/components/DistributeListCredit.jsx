@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useEffect } from 'react';
 import './DistributeListCredit.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
@@ -8,14 +9,15 @@ import { useSelector } from 'react-redux';
 import { deleteDistribute } from '../features/distribute/distributeSlice';
 import AddFormCredit from './AddFormCredit';
 
-export default function DistributeListCredit(){
-    const distribute = useSelector((state)=> state.distribute.distribute);
+export default function DistributeListCredit() {
+    const distribute = useSelector((state) => state.distribute.distribute);
     const dispatch = useDispatch();
 
     const handleDelete = async (id) => {
         await axios.delete(`http://localhost:8080/distribute/${id}`);
         dispatch(deleteDistribute(id));
     }
+
 
     return (
         <>
@@ -36,7 +38,7 @@ export default function DistributeListCredit(){
                     <AddFormCredit />
                     {distribute.map((d) => (
                         <tr key={d.id}>
-                            <td>{d.Date.slice(0,10)}</td>
+                            <td>{d.Date}</td>
                             <td>{d.Name}</td>
                             <td>{d.Amount}</td>
                             <td>{d.Needs}</td>

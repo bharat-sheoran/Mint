@@ -57,11 +57,6 @@ export default function AddForm() {
             <td>
                 <input onChange={handleFormData} type="text" name="used" id="used" placeholder="Used" value={formData.used} /></td>
 
-            <td>
-                <input onChange={handleFormData} type="text" name="availaible" id="availaible" placeholder="Availaible" value={formData.availaible} /></td>
-
-            <td>
-                <input onChange={handleFormData} type="text" name="invested" id="invested" placeholder="Invested" value={formData.invested} /></td>
 
             <td><button className="add" onClick={handleSubmit}>Add</button></td>
 
