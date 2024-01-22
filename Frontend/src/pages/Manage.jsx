@@ -9,6 +9,7 @@ import ManageDownNavBar from "../components/ManageDownNavBar";
 import { deleteAllManage } from "../features/manage/manageSlice";
 import { addDistribute } from "../features/distribute/distributeSlice";
 import { deleteAllDistribute } from "../features/distribute/distributeSlice";
+import { addAvailaible } from "../features/Availaible/availaibleSlice";
 
 export default function Manage() {
     const dispatch = useDispatch();
@@ -17,10 +18,12 @@ export default function Manage() {
     useEffect(() => {
         async function getData() {
             let data = await axios.get("http://localhost:8080/");
+            console.log(data.data[0]);
             let manageData = data.data[0].debit;
             let distributeData = data.data[0].credit;
             manageData.map((manage) => (dispatch(addManage(manage))));
             distributeData.map((distribute) => (dispatch(addDistribute(distribute))));
+            dispatch(addAvailaible(data.data[0].amount));
         }
         dispatch(deleteAllManage());
         dispatch(deleteAllDistribute());

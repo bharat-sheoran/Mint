@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 export default function ManageDownNavBar({ handleIsDebit, isDebit }) {
-    const manages = useSelector((state) => state.manage.manages);
+    const availaible = useSelector((state) => state.availaible);
 
     const handleCredit = () => {
         handleIsDebit(true);
@@ -19,7 +19,7 @@ export default function ManageDownNavBar({ handleIsDebit, isDebit }) {
         <>
             <NavBar className='justify-content-between manage-down-navbar'>
                 <div className="left-down-navbar">
-                    <b>Availaible: {typeof manages[0] == 'undefined' ? 0 : manages[0].Availaible}</b>
+                    <b>Availaible: {availaible.availaible}</b>
                 </div>
                 <div className="right-down-navbar">
                     <a className={`debit ${isDebit ? "" : "debit-active"}`} onClick={handleDebit}>Debit</a>
