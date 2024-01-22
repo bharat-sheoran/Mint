@@ -16,10 +16,9 @@ export default function Manage() {
 
     useEffect(() => {
         async function getData() {
-            let data = await axios.get("http://localhost:8080/manage");
-            let res = await axios.get("http://localhost:8080/distribute");
-            let manageData = data.data;
-            let distributeData = res.data;
+            let data = await axios.get("http://localhost:8080/");
+            let manageData = data.data[0].debit;
+            let distributeData = data.data[0].credit;
             manageData.map((manage) => (dispatch(addManage(manage))));
             distributeData.map((distribute) => (dispatch(addDistribute(distribute))));
         }

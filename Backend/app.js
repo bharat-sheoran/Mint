@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const Manage = require("./models/manage.js");
 const manageRouter = require("./routes/manage.js");
 const distributeRouter = require("./routes/distribute.js");
+const homeRouter = require("./routes/home.js");
 
 
 
@@ -26,16 +27,13 @@ app.use(express.static("public"));
 
 app.use("/manage" , manageRouter);
 app.use("/distribute" , distributeRouter);
+app.use("/", homeRouter);
 
 
 let server = {
     ser: "Server is working fine",
     port: "At port 8080"
 }
-
-app.get("/", (req, res) => {
-    res.send(server);
-})
 
 app.listen(port, () => {
     console.log(`App is listening at ${port}`);

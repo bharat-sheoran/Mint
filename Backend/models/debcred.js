@@ -3,13 +3,17 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const debcredSchema = new Schema({
-    debit: {
+    debit: [{
         type: Schema.Types.ObjectId,
         ref: 'Manage'
-    },
-    credit: {
+    }],
+    credit: [{
         type: Schema.Types.ObjectId,
         ref: 'Distribute'
+    }],
+    amount: {
+        type: Number,
+        required: true
     }
 })
 
