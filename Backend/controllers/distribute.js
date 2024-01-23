@@ -9,12 +9,14 @@ module.exports.addDistribute = async (req , res)=>{
     let data = req.body;
     const newData = new Distribute(data);
     await newData.save();
+    //TODO: Also add to Debcred
     res.send("Successfull Addition");
 }
 
 module.exports.deleteDistribute = async (req , res)=>{
     let {id} = req.params;
     await Distribute.findOneAndDelete({_id: id});
+    //TODO: Also delete from the Debcred
     res.send("Deleted Successfully");
 }
 

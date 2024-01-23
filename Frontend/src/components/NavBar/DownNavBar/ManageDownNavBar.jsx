@@ -1,10 +1,10 @@
 import NavBar from 'react-bootstrap/Navbar'
 import './ManageDownNav.css'
 import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
 
 export default function ManageDownNavBar({ handleIsDebit, isDebit }) {
-    const availaible = useSelector((state) => state.availaible);
+    const availaible = useSelector((state) => state.availaible.availaible);
+    //TODO: Connect this Availaible with the Debit and Credit Routes
 
     const handleCredit = () => {
         handleIsDebit(true);
@@ -19,7 +19,7 @@ export default function ManageDownNavBar({ handleIsDebit, isDebit }) {
         <>
             <NavBar className='justify-content-between manage-down-navbar'>
                 <div className="left-down-navbar">
-                    <b>Availaible: {availaible.availaible}</b>
+                    <b>Availaible: {availaible}</b>
                 </div>
                 <div className="right-down-navbar">
                     <a className={`debit ${isDebit ? "" : "debit-active"}`} onClick={handleDebit}>Debit</a>

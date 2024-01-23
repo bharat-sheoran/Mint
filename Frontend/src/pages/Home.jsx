@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import ManageNavBar from '../components/ManageNavBar';
+import ManageNavBar from '../components/NavBar/UpperNavBar/ManageNavBar';
 
 export default function Home() {
     const [res, setRes] = useState("");

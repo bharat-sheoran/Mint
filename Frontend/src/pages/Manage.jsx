@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState, useLayoutEffect } from "react"
-import ManageListDebit from "../components/ManageListDebit";
-import DistributeListCredit from "../components/DistributeListCredit";
-import { useDispatch, useSelector } from "react-redux";
+import ManageListDebit from "../components/Manage/ManageListDebit";
+import DistributeListCredit from "../components/Distribute/DistributeListCredit";
+import { useDispatch } from "react-redux";
 import { addManage } from "../features/manage/manageSlice";
-import ManageNavBar from "../components/ManageNavBar";
-import ManageDownNavBar from "../components/ManageDownNavBar";
+import ManageNavBar from "../components/NavBar/UpperNavBar/ManageNavBar";
+import ManageDownNavBar from "../components/NavBar/DownNavBar/ManageDownNavBar";
 import { deleteAllManage } from "../features/manage/manageSlice";
 import { addDistribute } from "../features/distribute/distributeSlice";
 import { deleteAllDistribute } from "../features/distribute/distributeSlice";
@@ -18,7 +18,6 @@ export default function Manage() {
     useEffect(() => {
         async function getData() {
             let data = await axios.get("http://localhost:8080/");
-            console.log(data.data[0]);
             let manageData = data.data[0].debit;
             let distributeData = data.data[0].credit;
             manageData.map((manage) => (dispatch(addManage(manage))));

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import EditForm from "../components/EditForm";
-import ManageNavBar from "../components/ManageNavBar";
+import EditForm from "../components/Manage/EditForm";
+import ManageNavBar from "../components/NavBar/UpperNavBar/ManageNavBar";
 
 export default function ManageEditForm(props){
     let manages = useSelector((state)=> state.manage.manages);

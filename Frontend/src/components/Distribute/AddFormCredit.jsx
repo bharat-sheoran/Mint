@@ -1,12 +1,10 @@
 import { useState } from "react"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux";
-import { addDistribute } from "../features/distribute/distributeSlice";
+import { addDistribute } from "../../features/distribute/distributeSlice";
 
 export default function AddFormCredit() {
     let dispatch = useDispatch();
-    let navigate = useNavigate();
     let [formData, setFormData] = useState({
         date: "",
         name: "",

@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import NavBar from 'react-bootstrap/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../index.css';
+import '../../../index.css';
 import './ManageNavBar.css';
 import NavManageButton from './NavManageButton';
 import { Link } from 'react-router-dom';

@@ -1,8 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux";
-import { addManage } from "../features/manage/manageSlice";
+import { addManage } from "../../features/manage/manageSlice";
 import "./AddForm.css";
 
 export default function AddForm() {

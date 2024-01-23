@@ -9,12 +9,14 @@ module.exports.addManage = async (req , res)=>{
     let data = req.body;
     const newData = new Manage(data);
     const savedData = await newData.save();
+    //TODO: Also Add the id to Debcred
     res.send("Successfull Addition");
 }
 
 module.exports.deleteManage = async (req , res)=>{
     let {id} = req.params;
     await Manage.findOneAndDelete({_id: id});
+    //TODO: Also Delete the id from Debcred
     res.send("Deleted Successfully");
 }
 

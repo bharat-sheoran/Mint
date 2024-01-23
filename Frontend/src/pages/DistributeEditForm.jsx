@@ -1,5 +1,5 @@
-import EditFormCredit from "../components/EditFormCredit"
-import ManageNavBar from "../components/ManageNavBar"
+import EditFormCredit from "../components/Distribute/EditFormCredit"
+import ManageNavBar from "../components/NavBar/UpperNavBar/ManageNavBar"
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 

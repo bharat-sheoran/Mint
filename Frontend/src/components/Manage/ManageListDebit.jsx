@@ -2,16 +2,17 @@ import axios from 'axios'
 import './ManageListDebit.css'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { deleteManage } from '../features/manage/manageSlice';
+import { deleteManage } from '../../features/manage/manageSlice';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
 import AddForm from './AddForm';
-import { useEffect } from 'react';
 
 export default function ManageListDebit() {
     const manages = useSelector((state) => state.manage.manages);
     const dispatch = useDispatch();
+    //TODO: Add Needs and Wants and Remove Investment from this Page
+    //TODO: Create a Separate page for Investment
 
     const handleDelete = async (id) => {
         await axios.delete(`http://localhost:8080/manage/${id}`);

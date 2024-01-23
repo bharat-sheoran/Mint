@@ -1,12 +1,11 @@
 import axios from 'axios';
-import { useEffect } from 'react';
 import './DistributeListCredit.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faPen } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { deleteDistribute } from '../features/distribute/distributeSlice';
+import { deleteDistribute } from '../../features/distribute/distributeSlice';
 import AddFormCredit from './AddFormCredit';
 
 export default function DistributeListCredit() {
