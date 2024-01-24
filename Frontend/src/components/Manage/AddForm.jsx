@@ -3,16 +3,19 @@ import axios from "axios"
 import { useDispatch } from "react-redux";
 import { addManage } from "../../features/manage/manageSlice";
 import "./AddForm.css";
+import { useSelector } from "react-redux";
 
 export default function AddForm() {
+    const debcredId = useSelector((state) => state.availaible.id);
     let dispatch = useDispatch();
+    
     let [formData, setFormData] = useState({
         date: "",
         category: "Select",
         name: "",
         used: "",
-        availaible: "",
-        invested: ""
+        availaible: "200",
+        invested: "100"
     })
 
     const handleFormData = (event) => {
@@ -24,15 +27,15 @@ export default function AddForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await axios.post("http://localhost:8080/manage", formData);
+        await axios.post("http://localhost:8080/manage", {formData, debcredId});
         dispatch(addManage(formData));
         setFormData({
             date: "",
             category: "Select",
             name: "",
             used: "",
-            availaible: "",
-            invested: ""
+            availaible: "200",
+            invested: "100"
         });
     }
 
@@ -46,7 +49,6 @@ export default function AddForm() {
                     <option value="">Select</option>
                     <option value="Needs">Needs</option>
                     <option value="Wants">Wants</option>
-                    <option value="Investment">Investment</option>
                     <option value="Needs&Wants">Needs&Wants</option>
                 </select></td>
 

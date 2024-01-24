@@ -10,12 +10,13 @@ import AddForm from './AddForm';
 
 export default function ManageListDebit() {
     const manages = useSelector((state) => state.manage.manages);
+    const dCId = useSelector((state) => state.availaible.id);
     const dispatch = useDispatch();
-    //TODO: Add Needs and Wants and Remove Investment from this Page
+    //TODO: Add Needs and Wants to this Page
     //TODO: Create a Separate page for Investment
 
     const handleDelete = async (id) => {
-        await axios.delete(`http://localhost:8080/manage/${id}`);
+        await axios.delete(`http://localhost:8080/manage/${dCId}/${id}`);
         dispatch(deleteManage(id));
     }
 

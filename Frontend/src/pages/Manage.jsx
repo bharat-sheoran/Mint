@@ -13,7 +13,14 @@ import { addAvailaible } from "../features/Availaible/availaibleSlice";
 
 export default function Manage() {
     const dispatch = useDispatch();
-    const [isDebit , setIsDebit] = useState(localStorage.getItem("isDebit"));
+    const [isDebit, setIsDebit] = useState(() => {
+        if (localStorage.getItem("isDebit") == null) {
+            localStorage.setItem("isDebit", false);
+        }else{
+            localStorage.getItem("isDebit");
+        }
+    });
+    //TODO: Fix LocalStorage Bug
 
     useEffect(() => {
         async function getData() {
@@ -22,22 +29,22 @@ export default function Manage() {
             let distributeData = data.data[0].credit;
             manageData.map((manage) => (dispatch(addManage(manage))));
             distributeData.map((distribute) => (dispatch(addDistribute(distribute))));
-            dispatch(addAvailaible(data.data[0].amount));
+            dispatch(addAvailaible(data.data[0]));
         }
         dispatch(deleteAllManage());
         dispatch(deleteAllDistribute());
         getData();
-    },[]);
+    }, []);
 
-    function handleIsDebit(isDebit){
+    function handleIsDebit(isDebit) {
         setIsDebit(isDebit);
     }
 
     return (
         <>
-            <ManageNavBar activeState={"Manage"}/>
-            <ManageDownNavBar handleIsDebit={handleIsDebit} isDebit={isDebit}/>
-            {isDebit ? <DistributeListCredit /> : <ManageListDebit/>}
+            <ManageNavBar activeState={"Manage"} />
+            <ManageDownNavBar handleIsDebit={handleIsDebit} isDebit={isDebit} />
+            {isDebit ? <DistributeListCredit /> : <ManageListDebit />}
         </>
     )
 }

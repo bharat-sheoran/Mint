@@ -1,4 +1,5 @@
 const Distribute = require("../models/distribute.js");
+const Debcred = require("../models/debcred.js");
 
 module.exports.getDistribute = async (req , res)=>{
     let data = await Distribute.find({}).sort({date: 1});
@@ -7,9 +8,9 @@ module.exports.getDistribute = async (req , res)=>{
 
 module.exports.addDistribute = async (req , res)=>{
     let data = req.body;
-    const newData = new Distribute(data);
-    await newData.save();
-    //TODO: Also add to Debcred
+    const newData = new Distribute(data.formData);
+    const savedData = await newData.save();
+    await Debcred.findByIdAndUpdate(data.debcredId, {$push: {credit: savedData._id}});
     res.send("Successfull Addition");
 }
 

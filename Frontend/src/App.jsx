@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, Router } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Manage from './pages/Manage';
 import DistributeEditForm from './pages/DistributeEditForm';

@@ -1,10 +1,11 @@
 import { useState } from "react"
 import axios from "axios"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addDistribute } from "../../features/distribute/distributeSlice";
 
 export default function AddFormCredit() {
     let dispatch = useDispatch();
+    const debcredId = useSelector((state) => state.availaible.id);
     let [formData, setFormData] = useState({
         date: "",
         name: "",
@@ -23,7 +24,7 @@ export default function AddFormCredit() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await axios.post("http://localhost:8080/distribute", formData);
+        await axios.post("http://localhost:8080/distribute", {formData, debcredId});
         dispatch(addDistribute(formData));
         setFormData({
             date: "",
