@@ -10,21 +10,22 @@ module.exports.addDistribute = async (req , res)=>{
     let data = req.body;
     const newData = new Distribute(data.formData);
     const savedData = await newData.save();
-    await Debcred.findByIdAndUpdate(data.debcredId, {$push: {credit: savedData._id}});
+    await Debcred.findByIdAndUpdate(data.debcredId, {$push: {credit: savedData._id}, $inc: {amount: savedData.needs + savedData.wants}});
     res.send("Successfull Addition");
 }
 
 module.exports.deleteDistribute = async (req , res)=>{
     let {id} = req.params;
+    let {dcid} = req.params;
+    let data = await Distribute.findById(id);
     await Distribute.findOneAndDelete({_id: id});
-    //TODO: Also delete from the Debcred
+    await Debcred.updateOne({_id: dcid}, {$pull: {credit: id}, $inc: {amount: -data.amount}});
     res.send("Deleted Successfully");
 }
 
 module.exports.editDistribute = async (req ,res)=>{
     let {id} = req.params;
     let data = req.body;
-    console.log(id , data);
     await Distribute.findByIdAndUpdate(id , data);
     res.send("Edited Successfully");
 }

@@ -7,14 +7,18 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { deleteDistribute } from '../../features/distribute/distributeSlice';
 import AddFormCredit from './AddFormCredit';
+import { updateAvailaible } from '../../features/Availaible/availaibleSlice';
 
 export default function DistributeListCredit() {
     const distribute = useSelector((state) => state.distribute.distribute);
+    const debCredId = useSelector((state) => state.availaible.id);
+    const debCredAvailaible = useSelector((state) => state.availaible.availaible);
     const dispatch = useDispatch();
 
-    const handleDelete = async (id) => {
-        await axios.delete(`http://localhost:8080/distribute/${id}`);
+    const handleDelete = async (id, amount) => {
+        await axios.delete(`http://localhost:8080/distribute/${debCredId}/${id}`);
         dispatch(deleteDistribute(id));
+        dispatch(updateAvailaible(debCredAvailaible - amount));
     }
 
 
@@ -43,7 +47,7 @@ export default function DistributeListCredit() {
                             <td>{d.Needs}</td>
                             <td>{d.Wants}</td>
                             <td>{d.Investment}</td>
-                            <td><abbr title="Delete"><FontAwesomeIcon className='delete' onClick={() => (handleDelete(d.id))} icon={faTrash} /></abbr></td>
+                            <td><abbr title="Delete"><FontAwesomeIcon className='delete' onClick={() => (handleDelete(d.id, d.Amount))} icon={faTrash} /></abbr></td>
                             <td><Link to="/distribute/edit" state={{ id: d.id }} className='link'>
                                 <abbr title="Edit"><FontAwesomeIcon className='edit' icon={faPen} /></abbr>
                             </Link>

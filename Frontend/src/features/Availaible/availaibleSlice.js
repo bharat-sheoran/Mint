@@ -15,9 +15,13 @@ export const availaibleSlice = createSlice({
             const newId = action.payload._id;
             state.availaible = newAvailaible;
             state.id = newId;
+        },
+        updateAvailaible: (state, action) => {
+            const newAvailaible = action.payload;
+            state.availaible = newAvailaible;
         }
     }
 })
 
-export const { addAvailaible} = availaibleSlice.actions;
+export const { addAvailaible, updateAvailaible} = availaibleSlice.actions;
 export default availaibleSlice.reducer;

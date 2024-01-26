@@ -10,16 +10,16 @@ module.exports.addManage = async (req , res)=>{
     let data = req.body;
     const newData = new Manage(data.formData);
     const savedData = await newData.save();
-    await Debcred.findByIdAndUpdate(data.debcredId, {$push: {debit: savedData._id}});
+    const dDCA = await Debcred.findByIdAndUpdate(data.debcredId, {$push: {debit: savedData._id}, $inc: {amount: -savedData.used}});
     res.send("Successfull Addition");
 }
 
 module.exports.deleteManage = async (req , res)=>{
     let {id} = req.params;
     let {dcid} = req.params;
+    let data = await Manage.findById(id);
     await Manage.findOneAndDelete({_id: id});
-    // const dDCID = await Debcred.updateOne({_id: id}, {$pull: {debit: {$elemMatch: {id}}}});
-    //TODO: Also Delete the id from Debcred
+    await Debcred.updateOne({_id: dcid}, {$pull: {debit: id}, $inc: {amount: data.used}});
     res.send("Deleted Successfully");
 }
 

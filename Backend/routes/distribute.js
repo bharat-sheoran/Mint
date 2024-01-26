@@ -7,7 +7,9 @@ router.route("/")
     .get(distributeController.getDistribute);
 
 router.route("/:id")
-    .put(distributeController.editDistribute)
+    .put(distributeController.editDistribute);
+
+router.route("/:dcid/:id")
     .delete(distributeController.deleteDistribute);
 
 module.exports = router;

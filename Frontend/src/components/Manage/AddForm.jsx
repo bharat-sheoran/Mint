@@ -4,9 +4,11 @@ import { useDispatch } from "react-redux";
 import { addManage } from "../../features/manage/manageSlice";
 import "./AddForm.css";
 import { useSelector } from "react-redux";
+import { updateAvailaible } from "../../features/Availaible/availaibleSlice";
 
 export default function AddForm() {
     const debcredId = useSelector((state) => state.availaible.id);
+    const debcredAvailaible = useSelector((state) => state.availaible.availaible);
     let dispatch = useDispatch();
     
     let [formData, setFormData] = useState({
@@ -29,6 +31,7 @@ export default function AddForm() {
         event.preventDefault();
         await axios.post("http://localhost:8080/manage", {formData, debcredId});
         dispatch(addManage(formData));
+        dispatch(updateAvailaible(debcredAvailaible - formData.used));
         setFormData({
             date: "",
             category: "Select",
