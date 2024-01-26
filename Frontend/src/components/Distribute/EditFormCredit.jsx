@@ -1,9 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { updateAvailaible } from "../../features/Availaible/availaibleSlice";
 
 export default function EditFormCredit({ id, data }) {
     let navigate = useNavigate();
+    let dispatch = useDispatch();
+    const debcredId = useSelector((state) => state.availaible.id);
+    const debcredAvailaible = useSelector((state) => state.availaible.availaible);
     console.log(data , id);
 
     let [formData, setFormData] = useState({
@@ -24,7 +29,8 @@ export default function EditFormCredit({ id, data }) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await axios.put(`http://localhost:8080/distribute/${id}`, formData);
+        await axios.put(`http://localhost:8080/distribute/${debcredId}/${id}`, formData);
+        dispatch(updateAvailaible(debcredAvailaible - data.Needs - data.Wants + formData.needs + formData.wants));
         navigate('/manage');
     }
     return (
@@ -40,13 +46,13 @@ export default function EditFormCredit({ id, data }) {
                 <input onChange={handleFormData} type="text" name="amount" id="amount" placeholder="amount" value={formData.amount} />
 
                 <label htmlFor="needs">Needs</label>
-                <input onChange={handleFormData} type="text" name="needs" id="needs" placeholder="needs" value={formData.needs} />
+                <input onChange={handleFormData} type="text" name="needs" id="needs" placeholder="needs" value={formData.needs = formData.amount/2} />
 
                 <label htmlFor="wants">Wants</label>
-                <input onChange={handleFormData} type="text" name="wants" id="wants" placeholder="wants" value={formData.wants} />
+                <input onChange={handleFormData} type="text" name="wants" id="wants" placeholder="wants" value={formData.wants = formData.amount*3/10} />
 
                 <label htmlFor="investment">Investment</label>
-                <input onChange={handleFormData} type="text" name="investment" id="investment" placeholder="Investment" value={formData.investment} />
+                <input onChange={handleFormData} type="text" name="investment" id="investment" placeholder="Investment" value={formData.investment = formData.amount/5} />
 
                 <button type="Submit">Edit</button>
             </form>

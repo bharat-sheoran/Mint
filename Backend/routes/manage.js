@@ -6,10 +6,8 @@ router.route("/")
     .get(manageController.getManage)
     .post(manageController.addManage);
 
-router.route("/:id")
-    .put(manageController.editManage);
-
 router.route("/:dcid/:id")
-    .delete(manageController.deleteManage);
+    .delete(manageController.deleteManage)
+    .put(manageController.editManage);
 
 module.exports = router;

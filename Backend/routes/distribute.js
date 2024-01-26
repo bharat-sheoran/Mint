@@ -6,10 +6,8 @@ router.route("/")
     .post(distributeController.addDistribute)
     .get(distributeController.getDistribute);
 
-router.route("/:id")
-    .put(distributeController.editDistribute);
-
 router.route("/:dcid/:id")
+    .put(distributeController.editDistribute)
     .delete(distributeController.deleteDistribute);
 
 module.exports = router;

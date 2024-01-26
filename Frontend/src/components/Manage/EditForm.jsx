@@ -1,9 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function EditForm({id , data}) {
     let navigate = useNavigate();
+    let dispatch = useDispatch();
+    const debcredId = useSelector((state) => state.availaible.id);
 
     let [formData, setFormData] = useState({
         date: data.Date.slice(0,10),
@@ -23,7 +26,7 @@ export default function EditForm({id , data}) {
 
     const handleSubmit = async (event)=>{
         event.preventDefault();
-        await axios.put(`http://localhost:8080/manage/${id}` , formData);
+        await axios.put(`http://localhost:8080/manage/${debcredId}/${id}` , formData);
         navigate('/manage');
     }
     return (

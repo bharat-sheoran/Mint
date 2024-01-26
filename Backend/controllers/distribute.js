@@ -19,13 +19,16 @@ module.exports.deleteDistribute = async (req , res)=>{
     let {dcid} = req.params;
     let data = await Distribute.findById(id);
     await Distribute.findOneAndDelete({_id: id});
-    await Debcred.updateOne({_id: dcid}, {$pull: {credit: id}, $inc: {amount: -data.amount}});
+    await Debcred.updateOne({_id: dcid}, {$pull: {credit: id}, $inc: {amount: -data.needs - data.wants}});
     res.send("Deleted Successfully");
 }
 
 module.exports.editDistribute = async (req ,res)=>{
     let {id} = req.params;
+    let {dcid} = req.params;
     let data = req.body;
+    let savedData = await Distribute.findById(id);
     await Distribute.findByIdAndUpdate(id , data);
+    await Debcred.updateOne({_id: dcid}, {$inc: {amount: data.needs + data.wants - savedData.needs - savedData.wants}});
     res.send("Edited Successfully");
 }
