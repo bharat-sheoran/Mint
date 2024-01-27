@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const distributeController = require("../controllers/distribute.js");
+const wrapAsync = require("../util/wrapAsync.js");
 
 router.route("/")
-    .post(distributeController.addDistribute)
-    .get(distributeController.getDistribute);
+    .post(wrapAsync(distributeController.addDistribute))
+    .get(wrapAsync(distributeController.getDistribute));
 
 router.route("/:dcid/:id")
-    .put(distributeController.editDistribute)
-    .delete(distributeController.deleteDistribute);
+    .put(wrapAsync(distributeController.editDistribute))
+    .delete(wrapAsync(distributeController.deleteDistribute));
 
 module.exports = router;
