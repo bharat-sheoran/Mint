@@ -29,6 +29,6 @@ module.exports.editDistribute = async (req ,res)=>{
     let data = req.body;
     let savedData = await Distribute.findById(id);
     await Distribute.findByIdAndUpdate(id , data);
-    await Debcred.updateOne({_id: dcid}, {$inc: {amount: data.needs + data.wants - savedData.needs - savedData.wants}});
+    await Debcred.updateOne({_id: dcid}, {$inc: {amount: (data.needs + data.wants) - (savedData.needs + savedData.wants)}});
     res.send("Edited Successfully");
 }

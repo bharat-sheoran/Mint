@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 export default function ManageDownNavBar({ handleIsDebit, isDebit }) {
     const availaible = useSelector((state) => state.availaible.availaible);
-    //TODO: Connect this Availaible with the Debit and Credit Routes
 
     const handleCredit = () => {
         handleIsDebit(true);

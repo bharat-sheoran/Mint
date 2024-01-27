@@ -1,0 +1,11 @@
+.add-form-distribute{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.add-form-distribute input{
+    width: 65%;
+    text-align: center;
+    border: none;
+    font-size: 0.85rem;
+}

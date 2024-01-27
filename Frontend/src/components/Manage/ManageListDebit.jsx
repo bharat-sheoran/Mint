@@ -25,34 +25,31 @@ export default function ManageListDebit() {
 
     return (
         <>
-            <table className="manage-list">
-                <thead className='manage-thead'>
-                    <tr>
-                        <th>Date</th>
-                        <th>Category</th>
-                        <th>Name</th>
-                        <th>Used</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody className='manage-tbody'>
-                    <AddForm/>
+            <div className="manage-list">
+                <div className='manage-thead'>
+                    <div>Date</div>
+                    <div>Category</div>
+                    <div>Name</div>
+                    <div>Used</div>
+                    <div>Action</div>
+                </div>
+                <div className='manage-tbody'>
+                    <AddForm />
                     {manages.map((d) => (
-                        <tr key={d.id}>
-                            <td>{d.Date}</td>
-                            <td>{d.Category}</td>
-                            <td>{d.Name}</td>
-                            <td>{d.Used}</td>
-                            <td><abbr title="Delete"><FontAwesomeIcon className='delete' onClick={() => (handleDelete(d.id , d.Used))} icon={faTrash} /></abbr></td>
-                            <td><Link to="/manage/edit" state={{ id: d.id }} className='link'>
-                                <abbr title="Edit"><FontAwesomeIcon className='edit' icon={faPen} /></abbr>
-                            </Link>
-                            </td>
-                        </tr>
+                        <div className='manage-tbody-inner' key={d.id}>
+                            <div>{d.Date.slice(0,10)}</div>
+                            <div>{d.Category}</div>
+                            <div>{d.Name}</div>
+                            <div>{d.Used}</div>
+                            <div><abbr title="Delete"><FontAwesomeIcon className='delete' onClick={() => (handleDelete(d.id, d.Used))} icon={faTrash} /></abbr>
+                                <Link to="/manage/edit" state={{ id: d.id }} className='link'>
+                                    <abbr title="Edit"><FontAwesomeIcon className='edit' icon={faPen} /></abbr>
+                                </Link>
+                            </div>
+                        </div>
                     ))}
-                </tbody>
-            </table>
+                </div>
+            </div>
         </>
     )
 }

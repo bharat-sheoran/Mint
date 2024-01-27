@@ -15,47 +15,44 @@ export default function DistributeListCredit() {
     const debCredAvailaible = useSelector((state) => state.availaible.availaible);
     const dispatch = useDispatch();
 
-    const handleDelete = async (id, amount) => {
+    const handleDelete = async (id, needs, wants) => {
         await axios.delete(`http://localhost:8080/distribute/${debCredId}/${id}`);
         dispatch(deleteDistribute(id));
-        dispatch(updateAvailaible(debCredAvailaible - amount));
+        dispatch(updateAvailaible(debCredAvailaible - needs - wants));
     }
 
 
     return (
         <>
-            <table className="distribute-list">
-                <thead className='distribute-thead'>
-                    <tr>
-                        <th>Date</th>
-                        <th>Credited From</th>
-                        <th>Amount</th>
-                        <th>Needs</th>
-                        <th>Wants</th>
-                        <th>Investment</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody className='distribute-tbody'>
+            <div className="distribute-list">
+                <div className='distribute-thead'>
+                        <div>Date</div>
+                        <div>Credited From</div>
+                        <div>Amount</div>
+                        <div>Needs</div>
+                        <div>Wants</div>
+                        <div>Investment</div>
+                        <div>Action</div>
+                </div>
+                <div className='distribute-tbody'>
                     <AddFormCredit />
                     {distribute.map((d) => (
-                        <tr key={d.id}>
-                            <td>{d.Date}</td>
-                            <td>{d.Name}</td>
-                            <td>{d.Amount}</td>
-                            <td>{d.Needs}</td>
-                            <td>{d.Wants}</td>
-                            <td>{d.Investment}</td>
-                            <td><abbr title="Delete"><FontAwesomeIcon className='delete' onClick={() => (handleDelete(d.id, d.Amount))} icon={faTrash} /></abbr></td>
-                            <td><Link to="/distribute/edit" state={{ id: d.id }} className='link'>
+                        <div className='distribute-tbody-inner' key={d.id}>
+                            <div>{d.Date.slice(0 , 10)}</div>
+                            <div>{d.Name}</div>
+                            <div>{d.Amount}</div>
+                            <div>{d.Needs}</div>
+                            <div>{d.Wants}</div>
+                            <div>{d.Investment}</div>
+                            <div><abbr title="Delete"><FontAwesomeIcon className='delete' onClick={() => (handleDelete(d.id, d.Needs, d.Wants))} icon={faTrash} /></abbr>
+                            <Link to="/distribute/edit" state={{ id: d.id }} className='link'>
                                 <abbr title="Edit"><FontAwesomeIcon className='edit' icon={faPen} /></abbr>
                             </Link>
-                            </td>
-                        </tr>
+                            </div>
+                        </div>
                     ))}
-                </tbody>
-            </table>
+                </div>
+            </div>
         </>
     )
 }

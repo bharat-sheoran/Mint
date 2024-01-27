@@ -29,6 +29,6 @@ module.exports.editManage = async (req , res)=>{
     let data = req.body;
     let savedData = await Manage.findById(id);
     await Manage.findByIdAndUpdate(id , data);
-    await Debcred.updateOne({_id: dcid}, {$inc: {amount: data.used - savedData.used}});
+    await Debcred.updateOne({_id: dcid}, {$inc: {amount: -data.used + savedData.used}});
     res.send("Edited Successfully");
 }

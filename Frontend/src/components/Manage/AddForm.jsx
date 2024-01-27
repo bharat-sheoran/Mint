@@ -43,27 +43,27 @@ export default function AddForm() {
     }
 
     return (
-        <tr>
-            <td>
-                <input onChange={handleFormData} type="date" name="date" id="date" value={formData.date} /></td>
+        <div className="add-form-manage">
+            <div>
+                <input onChange={handleFormData} type="date" name="date" id="date" value={formData.date} /></div>
 
-            <td>
+            <div>
                 <select onChange={handleFormData} name="category" id="category" value={formData.category}>
                     <option value="">Select</option>
                     <option value="Needs">Needs</option>
                     <option value="Wants">Wants</option>
                     <option value="Needs&Wants">Needs&Wants</option>
-                </select></td>
+                </select></div>
 
-            <td>
-                <input onChange={handleFormData} type="text" name="name" id="name" placeholder="Expense" value={formData.name} /></td>
+            <div>
+                <input onChange={handleFormData} type="text" name="name" id="name" placeholder="Expense" value={formData.name} /></div>
 
-            <td>
-                <input onChange={handleFormData} type="text" name="used" id="used" placeholder="Used" value={formData.used} /></td>
+            <div>
+                <input onChange={handleFormData} type="text" name="used" id="used" placeholder="Used" value={formData.used} /></div>
 
 
-            <td><button className="add" onClick={handleSubmit}>Add</button></td>
+            <div><button className="add" onClick={handleSubmit}>Add</button></div>
 
-        </tr>
+        </div>
     )
 }

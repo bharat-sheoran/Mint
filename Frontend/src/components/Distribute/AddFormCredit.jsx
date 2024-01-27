@@ -3,6 +3,7 @@ import axios from "axios"
 import { useDispatch, useSelector } from "react-redux";
 import { addDistribute } from "../../features/distribute/distributeSlice";
 import { updateAvailaible } from "../../features/Availaible/availaibleSlice";
+import "./AddFormCredit.css";
 
 export default function AddFormCredit() {
     let dispatch = useDispatch();
@@ -40,32 +41,32 @@ export default function AddFormCredit() {
     }
 
     return (
-        <tr>
-            <td><input onChange={handleFormData} type="date" name="date" id="date" value={formData.date} /></td>
+        <div className="add-form-distribute">
+            <div><input onChange={handleFormData} type="date" name="date" id="date" value={formData.date} /></div>
 
-            <td>
+            <div>
                 <input onChange={handleFormData} type="text" name="name" id="name" placeholder="Credited From" value={formData.name} />
-            </td>
+            </div>
 
-            <td>
+            <div>
                 <input onChange={handleFormData} type="text" name="amount" id="amount" placeholder="Amount" value={formData.amount} />
-            </td>
+            </div>
 
-            <td>
+            <div>
                 <input onChange={handleFormData} type="text" name="needs" id="needs" placeholder="needs" value={formData.needs = formData.amount/2} />
-            </td>
+            </div>
 
-            <td>
+            <div>
                 <input onChange={handleFormData} type="text" name="wants" id="wants" placeholder="wants" value={formData.wants = formData.amount*3/10} />
-            </td>
+            </div>
 
-            <td>
+            <div>
                 <input onChange={handleFormData} type="text" name="investment" id="investment" placeholder="Investment" value={formData.investment = formData.amount/5} />
-            </td>
+            </div>
 
-            <td>
+            <div>
                 <button className="add" onClick={handleSubmit}>Add</button>
-            </td>
-        </tr>
+            </div>
+        </div>
     )
 }
