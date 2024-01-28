@@ -37,14 +37,16 @@ export default function ManageListDebit() {
                     <AddForm />
                     {manages.map((d) => (
                         <div className='manage-tbody-inner' key={d.id}>
-                            <div>{d.Date.slice(0,10)}</div>
+                            <div>{d.Date.slice(0, 10)}</div>
                             <div>{d.Category}</div>
                             <div>{d.Name}</div>
                             <div>{d.Used}</div>
-                            <div><abbr title="Delete"><FontAwesomeIcon className='delete' onClick={() => (handleDelete(d.id, d.Used))} icon={faTrash} /></abbr>
-                                <Link to="/manage/edit" state={{ id: d.id }} className='link'>
+                            <div className='manage-action'>
+                                <div><abbr title="Delete"><FontAwesomeIcon className='delete' onClick={() => (handleDelete(d.id, d.Used))} icon={faTrash} /></abbr></div>
+                                <div><Link to="/manage/edit" state={{ id: d.id }} className='link'>
                                     <abbr title="Edit"><FontAwesomeIcon className='edit' icon={faPen} /></abbr>
                                 </Link>
+                                </div>
                             </div>
                         </div>
                     ))}

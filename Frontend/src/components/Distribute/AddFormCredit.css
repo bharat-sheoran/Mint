@@ -9,3 +9,15 @@
     border: none;
     font-size: 0.85rem;
 }
+
+@media screen and (max-width: 650px) {
+    .add-form-distribute input{
+        font-size: smaller;
+    }
+}
+
+@media screen and (max-width: 530px){
+    .add-form-distribute input{
+        font-size: xx-small;
+    }
+}

@@ -26,28 +26,30 @@ export default function DistributeListCredit() {
         <>
             <div className="distribute-list">
                 <div className='distribute-thead'>
-                        <div>Date</div>
-                        <div>Credited From</div>
-                        <div>Amount</div>
-                        <div>Needs</div>
-                        <div>Wants</div>
-                        <div>Investment</div>
-                        <div>Action</div>
+                    <div>Date</div>
+                    <div>Credited</div>
+                    <div>Amount</div>
+                    <div>Needs</div>
+                    <div>Wants</div>
+                    <div>Investment</div>
+                    <div>Action</div>
                 </div>
                 <div className='distribute-tbody'>
                     <AddFormCredit />
                     {distribute.map((d) => (
                         <div className='distribute-tbody-inner' key={d.id}>
-                            <div>{d.Date.slice(0 , 10)}</div>
+                            <div>{d.Date.slice(0, 10)}</div>
                             <div>{d.Name}</div>
                             <div>{d.Amount}</div>
                             <div>{d.Needs}</div>
                             <div>{d.Wants}</div>
                             <div>{d.Investment}</div>
-                            <div><abbr title="Delete"><FontAwesomeIcon className='delete' onClick={() => (handleDelete(d.id, d.Needs, d.Wants))} icon={faTrash} /></abbr>
-                            <Link to="/distribute/edit" state={{ id: d.id }} className='link'>
-                                <abbr title="Edit"><FontAwesomeIcon className='edit' icon={faPen} /></abbr>
-                            </Link>
+                            <div className='distribute-action'>
+                                <div><abbr title="Delete"><FontAwesomeIcon className='delete' onClick={() => (handleDelete(d.id, d.Needs, d.Wants))} icon={faTrash} /></abbr></div>
+                                <div><Link to="/distribute/edit" state={{ id: d.id }} className='link'>
+                                    <abbr title="Edit"><FontAwesomeIcon className='edit' icon={faPen} /></abbr>
+                                </Link>
+                                </div>
                             </div>
                         </div>
                     ))}

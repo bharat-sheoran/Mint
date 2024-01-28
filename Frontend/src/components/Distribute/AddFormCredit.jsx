@@ -45,7 +45,7 @@ export default function AddFormCredit() {
             <div><input onChange={handleFormData} type="date" name="date" id="date" value={formData.date} /></div>
 
             <div>
-                <input onChange={handleFormData} type="text" name="name" id="name" placeholder="Credited From" value={formData.name} />
+                <input onChange={handleFormData} type="text" name="name" id="name" placeholder="Credited" value={formData.name} />
             </div>
 
             <div>

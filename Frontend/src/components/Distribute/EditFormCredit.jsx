@@ -9,7 +9,6 @@ export default function EditFormCredit({ id, data }) {
     let dispatch = useDispatch();
     const debcredId = useSelector((state) => state.availaible.id);
     const debcredAvailaible = useSelector((state) => state.availaible.availaible);
-    console.log(data , id);
 
     let [formData, setFormData] = useState({
         date: data.Date.slice(0, 10),

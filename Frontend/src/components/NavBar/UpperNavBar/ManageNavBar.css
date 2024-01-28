@@ -4,6 +4,7 @@
 }
 
 .left{
+    width: 50%;
     margin-left: 1rem;
 }
 
@@ -14,6 +15,13 @@
 }
 
 .right{
-    margin-right: 1rem;
+    width: 50%;
     height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.right a{
+    margin-right: 1rem;
 }

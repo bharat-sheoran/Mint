@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Manage from './pages/Manage';
 import DistributeEditForm from './pages/DistributeEditForm';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import ManageEditForm from './pages/ManageEditForm';
@@ -19,6 +21,8 @@ function App() {
               <Route path='/manage' element={<Manage />} />
               <Route path='/manage/edit' element={<ManageEditForm />} />
               <Route path='/distribute/edit' element={<DistributeEditForm />} />
+              <Route path='/login' element={<Login/>}/>
+              <Route path='/signup' element={<Signup/>}/>
             </Routes>
           </BrowserRouter>
       </Provider>

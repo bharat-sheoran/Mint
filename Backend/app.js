@@ -25,8 +25,8 @@ app.use(express.json());
 app.use(allowCrossDomain);
 app.use(express.static("public"));
 
-app.use("/manage" , manageRouter);
-app.use("/distribute" , distributeRouter);
+app.use("/manage", manageRouter);
+app.use("/distribute", distributeRouter);
 app.use("/", homeRouter);
 
 
