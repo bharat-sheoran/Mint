@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import axios from "axios";
 
 //TODO: Style the Signup Page
 export default function AuthSignup() {
@@ -21,8 +21,10 @@ export default function AuthSignup() {
         })
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
+        let res = await axios.post("http://localhost:8080/signup", signupFormData);
+        console.log(res);
     }
 
     function handleEye(){

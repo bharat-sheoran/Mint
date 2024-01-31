@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 //TODO: Style the Login Page
-export default function AuthLogin(){
+export default function AuthLogin() {
     let [signupFormData, setSignupFormData] = useState({
         email: "",
         password: ""
@@ -20,12 +20,17 @@ export default function AuthLogin(){
         e.preventDefault();
     }
 
-    function handleEye(){
-        passwordType==="password"?setPasswordType("text"):setPasswordType("password");
+    function handleEye() {
+        passwordType === "password" ? setPasswordType("text") : setPasswordType("password");
+    }
+
+    function google() {
+        window.open("http://localhost:8080/auth/google/callback", "_self");
     }
 
     return (
         <>
+            <button onClick={google} className="loginButton google">Google</button>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="email">E-mail:</label>

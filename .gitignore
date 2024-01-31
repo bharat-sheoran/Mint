@@ -2,3 +2,4 @@ Backend/init
 Backend/node_modules
 Backend/.env
 Frontend/node_modules
+Frontend/.env

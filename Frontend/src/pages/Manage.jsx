@@ -11,7 +11,7 @@ import { addDistribute } from "../features/distribute/distributeSlice";
 import { deleteAllDistribute } from "../features/distribute/distributeSlice";
 import { addAvailaible } from "../features/Availaible/availaibleSlice";
 
-export default function Manage() {
+export default function Manage({user}) {
     const dispatch = useDispatch();
     const [isDebit, setIsDebit] = useState(() => {
         if (localStorage.getItem("isDebit") == null) {
@@ -42,7 +42,7 @@ export default function Manage() {
 
     return (
         <>
-            <ManageNavBar activeState={"Manage"} />
+            <ManageNavBar user={user} activeState={"Manage"} />
             <ManageDownNavBar handleIsDebit={handleIsDebit} isDebit={isDebit} />
             {isDebit ? <DistributeListCredit /> : <ManageListDebit />}
         </>

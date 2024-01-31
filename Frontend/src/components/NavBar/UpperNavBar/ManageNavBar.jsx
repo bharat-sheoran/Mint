@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 
 //TODO: Style the Login and Signup of Navbar
-export default function ManageNavBar({activeState}) {
+export default function ManageNavBar({ activeState, user }) {
     return (
         <>
             <NavBar className='sticky-top manage-navbar'>
@@ -16,9 +16,9 @@ export default function ManageNavBar({activeState}) {
                     <Link to={'/'} className='logo link'>MINT</Link>
                 </div>
                 <div className="right">
-                    <Link to={'/login'} className='link'>Login</Link>
-                    <Link to={'/signup'} className='link'>Signup</Link>
-                    <NavManageButton activeState={activeState}/>
+                    {!user ? <><Link to={'/login'} className='link'>Login</Link>
+                        <Link to={'/signup'} className='link'>Signup</Link></> : "User"}
+                    <NavManageButton activeState={activeState} />
                 </div>
             </NavBar>
         </>
