@@ -13,6 +13,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 //TODO: Create the User for more Interaction(Authenticate the App)
+//TODO: Create Authentication for facebook
+//TODO: Create E-mail Authentication
 function App() {
   const [user, setUser] = useState(null);
 

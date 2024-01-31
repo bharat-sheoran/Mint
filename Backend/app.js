@@ -19,7 +19,8 @@ const cookieSession = require("cookie-session");
 const cors = require("cors");
 // const mongoStore = require("connect-mongo");
 
-
+//TODO: Create Signup Authentication
+//TODO: Store the information into the Database
 
 const db_URL = process.env.DB_URL;
 mongoose.connect(db_URL)
