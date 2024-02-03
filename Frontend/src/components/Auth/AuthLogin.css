@@ -2,7 +2,6 @@
     display: flex;
     height: calc(100vh - 3rem);
     background-image: url("../../assets/LoginBackground.jpg");
-    background-size: contain;
     background-repeat: no-repeat;
     background-size: 100vh;
     background-position: 0%;
@@ -13,7 +12,7 @@
 }
 
 .right-login{
-    padding: 5rem;
+    padding: 5rem 0 0 4rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -24,9 +23,10 @@
 
 .submit-login-button{
     border: none;
-    width: 100%;
+    width: 13.5rem;
     background-color: rgb(130, 130, 187);
     border-radius: 5rem;
+    margin-top: 1rem;
 }
 
 .down-right-login{
@@ -41,5 +41,13 @@
 }
 
 .up-right-login div{
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+}
+
+.password-icon{
+    margin-top: 2rem;
+}
+
+.agree-terms-checkbox{
+    font-size: x-small;
 }

@@ -1,6 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 import './AuthLogin.css'
+import TextField from '@mui/material/TextField'
+import { Input, InputLabel, InputAdornment, IconButton, FormControl, Checkbox } from "@mui/material";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 //TODO: Style the Login Page
 export default function AuthLogin() {
@@ -8,6 +12,10 @@ export default function AuthLogin() {
         email: "",
         password: ""
     })
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
 
     let [passwordType, setPasswordType] = useState("password");
     let [agree, setAgree] = useState(false);
@@ -38,35 +46,38 @@ export default function AuthLogin() {
         window.open("http://localhost:8080/auth/facebook/callback", "_self");
     }
 
-    function handleAgree(e){
+    function handleAgree(e) {
         setAgree(e.target.checked);
     }
 
     return (
         <div className="login">
             <div className="left-login">
-                
+
             </div>
             <div className="right-login">
                 <div className="up-right-login">
-                <h2>Login</h2>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <label htmlFor="email">E-mail:</label>
-                        <input onChange={handlesignupForm} type="email" placeholder="E-mail" id="email" name="email" value={signupFormData.email} />
-                    </div>
-
-                    <div>
-                        <label htmlFor="password">Password:</label>
-                        <input onChange={handlesignupForm} type={passwordType} placeholder="Choose a Password" id="password" name="password" value={signupFormData.password} />
-                        <button onClick={handleEye}>Eye</button>
-                    </div>
-                    <div>
-                        <input onChange={handleAgree} type="checkbox" name="agree" id="agree" value={agree}/>
-                        <label htmlFor="agree">Agree Terms&Conditions</label>
-                    </div>
-                    <button className="submit-login-button" type="submit" disabled={!agree}>Login</button>
-                </form>
+                    <h2>Login</h2>
+                    <form onSubmit={handleSubmit}>
+                        <div>
+                            <TextField onChange={handlesignupForm} type="email" placeholder="E-mail" id="email standard-basic" label="E-mail" variant="standard" name="email" value={signupFormData.email} />
+                        </div>
+                        <div>
+                            <TextField
+                                id="standard-password-input"
+                                label="Password"
+                                type={passwordType}
+                                autoComplete="current-password"
+                                variant="standard"
+                            />
+                            {passwordType === "password" ? <VisibilityIcon className="password-icon" onClick={handleEye} /> : <VisibilityOffIcon className="password-icon" onClick={handleEye} />}
+                        </div>
+                        <div>
+                            <Checkbox onChange={handleAgree} name="agree" id="agree" value={agree} />
+                            <label className="agree-terms-checkbox" htmlFor="agree">Agree Terms&Conditions</label>
+                        </div>
+                        <button className="submit-login-button" type="submit" disabled={!agree}>Login</button>
+                    </form>
                 </div>
                 <div className="down-right-login">
                     <button onClick={google} className="loginButton google">Google</button>

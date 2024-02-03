@@ -1,6 +1,6 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
-const LocalStrategy = require("passport-local");
+const LocalStrategy = require("passport-local").Strategy;
 const passport = require("passport");
 const User = require("./models/user.js");
 
@@ -10,10 +10,10 @@ passport.use(new FacebookStrategy({
     callbackURL: "/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'photos', 'email'],
     enableProof: true
-  },
-  function(accessToken, refreshToken, profile, cb) {
-    cb(null, profile)
-  }
+},
+    function (accessToken, refreshToken, profile, cb) {
+        cb(null, profile)
+    }
 ));
 
 passport.use(new GoogleStrategy({
@@ -27,7 +27,12 @@ passport.use(new GoogleStrategy({
     }
 ));
 
-passport.use(new LocalStrategy(User.authenticate()));
+passport.use(new LocalStrategy(async function (email, password, done) {
+    const user = await User.findOne(user => user.email === email && user.password === password);
+    if (!user) return done(null, false);
+    if (user.password !== password) return done(null, false);
+    return done(null, user);
+}));
 
 passport.serializeUser((user, done) => {
     done(null, user);
