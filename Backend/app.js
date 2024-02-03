@@ -13,7 +13,6 @@ const authRouter = require("./routes/auth.js");
 const session = require("express-session");
 const passport = require("passport");
 const passportSetup = require("./passport.js");
-const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const cookieSession = require("cookie-session");
 const cors = require("cors");
@@ -67,10 +66,11 @@ app.use(cors({
 }));
 app.use(express.static("public"));
 
+
 app.use("/manage", manageRouter);
 app.use("/distribute", distributeRouter);
-app.use("/", homeRouter);
 app.use("/auth", authRouter);
+app.use("/", homeRouter);
 
 
 app.listen(port, () => {

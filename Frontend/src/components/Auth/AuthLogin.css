@@ -1,0 +1,45 @@
+.login{
+    display: flex;
+    height: calc(100vh - 3rem);
+    background-image: url("../../assets/LoginBackground.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 100vh;
+    background-position: 0%;
+}
+
+.left-login{
+    width: 40%;
+}
+
+.right-login{
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60%;
+    background-color: white;
+    border-radius: 2.5rem 0 0 2.5rem;
+}
+
+.submit-login-button{
+    border: none;
+    width: 100%;
+    background-color: rgb(130, 130, 187);
+    border-radius: 5rem;
+}
+
+.down-right-login{
+    display: flex;
+    justify-content: center;
+}
+
+.loginButton{
+    margin: 0 1rem 0 1rem;
+    border: 0.5px solid rgba(61, 57, 57, 0.453);
+    border-radius: 1rem;
+}
+
+.up-right-login div{
+    margin-top: 1rem;
+}

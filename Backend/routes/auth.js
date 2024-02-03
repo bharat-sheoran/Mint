@@ -5,12 +5,23 @@ const wrapAsync = require('../util/wrapAsync.js');
 const passport = require("passport");
 
 router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
+router.get('/facebook', passport.authenticate('facebook', { scope: ['user_friends', 'manage_pages'] }));
 
 router.get("/google/callback", passport.authenticate("google", {
-    successRedirect: process.env.FRONTEND_URL,
-    failureRedirect: "/login/failed"
+  successRedirect: process.env.FRONTEND_URL,
+  failureRedirect: "/login/failed"
 }));
 
+router.get('/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login/failed' }),
+  function (req, res) {
+    res.redirect(process.env.FRONTEND_URL);
+  });
+
+
+router.post("/login", passport.authenticate('local', { failureRedirect: '/login/failed' }),
+  function (req, res) {
+    res.redirect(process.env.FRONTEND_URL);
+  });
 router.get("/login/failed", authController.loginFailed);
 router.get("/login/success", authController.loginSuccessfull);
 router.get("/logout", authController.logout);
