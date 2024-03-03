@@ -5,11 +5,12 @@ import TextField from '@mui/material/TextField'
 import { Input, InputLabel, InputAdornment, IconButton, FormControl, Checkbox } from "@mui/material";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { Navigate } from "react-router-dom";
 
 //TODO: Style the Login Page
 export default function AuthLogin() {
     let [signupFormData, setSignupFormData] = useState({
-        email: "",
+        username: "",
         password: ""
     })
 
@@ -29,9 +30,22 @@ export default function AuthLogin() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const response = await axios.post("http://localhost:8080/auth/login", signupFormData);
         console.log(signupFormData);
-        console.log(response);
+        try {
+            const response = await axios.post(`http://localhost:8080/auth/login`,  signupFormData);
+            if (response.status === 200) {
+                await localStorage.setItem('user', JSON.stringify(response.data));
+                return(
+                    <Navigate to="/login" />
+                )
+                console.log("Login Successfull");
+            } else {
+                console.log("Login Error");
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            Alert.alert('Error', 'An error occurred while logging in');
+        }
     }
 
     function handleEye() {
@@ -60,15 +74,18 @@ export default function AuthLogin() {
                     <h2>Login</h2>
                     <form onSubmit={handleSubmit}>
                         <div>
-                            <TextField onChange={handlesignupForm} type="email" placeholder="E-mail" id="email standard-basic" label="E-mail" variant="standard" name="email" value={signupFormData.email} />
+                            <TextField onChange={handlesignupForm} type="text" placeholder="Username" id="email standard-basic" label="Username" variant="standard" name="username" value={signupFormData.email} />
                         </div>
                         <div>
                             <TextField
+                                value={signupFormData.password}
                                 id="standard-password-input"
                                 label="Password"
                                 type={passwordType}
+                                name="password"
                                 autoComplete="current-password"
                                 variant="standard"
+                                onChange={handlesignupForm}
                             />
                             {passwordType === "password" ? <VisibilityIcon className="password-icon" onClick={handleEye} /> : <VisibilityOffIcon className="password-icon" onClick={handleEye} />}
                         </div>
@@ -80,8 +97,8 @@ export default function AuthLogin() {
                     </form>
                 </div>
                 <div className="down-right-login">
-                    <button onClick={google} className="loginButton google">Google</button>
-                    <button onClick={facebook} className="loginButton facebook">Facebook</button>
+                    {/* <button onClick={google} className="loginButton google">Google</button>
+                    <button onClick={facebook} className="loginButton facebook">Facebook</button> */}
                 </div>
             </div>
         </div>

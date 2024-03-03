@@ -18,7 +18,12 @@ router.get('/facebook/callback', passport.authenticate('facebook', { failureRedi
   });
 
 
-router.post("/login", passport.authenticate('local', { failureRedirect: '/login/failed', successRedirect: '/login/success' }));
+router.route("/login")
+  .post(passport.authenticate('local' ,{failureRedirect: 'auth/login/failed'}), authController.loginSuccessfull);
+
+router.route("/signup")
+  .post(authController.signup);
+
 router.get("/login/failed", authController.loginFailed);
 router.post("/login/failed", authController.loginFailed);
 router.get("/login/success", authController.loginSuccessfull);

@@ -2,26 +2,41 @@ const User = require("../models/user.js");
 const passport = require("passport");
 
 module.exports.loginFailed = (req, res) => {
-    res.status(401).json({
-        error: true,
-        message: "failure"
-    })
+    console.log("Login Failed");
+    res.json({ success: false, message: 'User Not Logged in successfully' });
 }
 
-module.exports.loginSuccessfull = (req, res) => {
-    console.log(req.user);
-    if (req.user) {
-        res.status(200).json({
-            success: true,
-            message: "successfull",
-            user: req.user
-        })
-    } else {
-        res.status(403).json({ error: true, message: "User is undefined" });
+module.exports.loginSuccessfull = async (req, res) => {
+    res.status(200);
+    const username = req.body.username;
+    console.log(username);
+    const userData = await User.findOne({ username: username }).exec();
+    res.send(userData);
+}
+
+module.exports.signup = async (req, res, next) => {
+    try {
+        const { name, username, password, email, phone } = req.body;
+        const newUser = new User({ name: name, email: email, username: username, phone: phone });
+        User.register(newUser, password, (err, user) => {
+            if (err) {
+                console.log(err);
+                res.status(500);
+                res.send("Problem while signing up");
+            }
+            passport.authenticate('local')(req, res, () => {
+                res.status(200);
+                res.send("Signup Successfull");
+            });
+        });
+    } catch (e) {
+        res.send("Error in Signup");
     }
 }
 
 module.exports.logout = (req, res) => {
+    console.log("Logout Request Comes");
     req.logout();
-    res.redirect(process.env.FRONTEND_URL);
+    res.status(200);
+    res.send("Logout Successfull");
 }

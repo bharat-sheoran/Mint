@@ -16,17 +16,25 @@ import axios from 'axios';
 //TODO: Create Authentication for facebook
 //TODO: Create E-mail Authentication
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
+
+  const getUser = async () => {
+    try {
+      const retrievedUser = await localStorage.getItem('user');
+      console.log(retrievedUser)
+      if (retrievedUser !== null) {
+        setUser(JSON.parse(retrievedUser));
+      } else {
+        console.log("You're not logged in");
+        setUser(false);
+      }
+    } catch (error) {
+      console.log(error);
+      setUser(false);
+    }
+  };
 
   useEffect(() => {
-    const getUser = async () => {
-      try {
-        const response = await axios.get("http://localhost:8080/auth/login/success", { withCredentials: true });
-        setUser(response.data.user);
-      } catch (err) {
-        console.log(err);
-      }
-    }
     getUser();
   }, [])
 

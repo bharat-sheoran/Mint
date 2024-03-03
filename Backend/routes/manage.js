@@ -2,13 +2,14 @@ const express = require("express");
 const router = express.Router();
 const manageController = require("../controllers/manage.js");
 const wrapAsync = require('../util/wrapAsync.js');
+const {isLoggedIn} = require("../middleware.js");
 
 router.route("/")
-    .get(wrapAsync(manageController.getManage))
-    .post(wrapAsync(manageController.addManage));
+    .get(isLoggedIn, wrapAsync(manageController.getManage))
+    .post(isLoggedIn, wrapAsync(manageController.addManage));
 
 router.route("/:dcid/:id")
-    .delete(wrapAsync(manageController.deleteManage))
-    .put(wrapAsync(manageController.editManage));
+    .delete(isLoggedIn, wrapAsync(manageController.deleteManage))
+    .put(isLoggedIn, wrapAsync(manageController.editManage));
 
 module.exports = router;

@@ -23,7 +23,7 @@ export default function AuthSignup() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        let res = await axios.post("http://localhost:8080/signup", signupFormData);
+        let res = await axios.post("http://localhost:8080/auth/signup", signupFormData);
         console.log(res);
     }
 
