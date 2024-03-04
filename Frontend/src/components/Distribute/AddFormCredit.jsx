@@ -15,7 +15,8 @@ export default function AddFormCredit() {
         amount: "",
         needs: "",
         wants: "",
-        investment: ""
+        investment: "",
+        user: JSON.parse(localStorage.getItem('user'))._id || ""
     })
 
     const handleFormData = (event) => {
@@ -36,7 +37,8 @@ export default function AddFormCredit() {
             amount: "",
             needs: "",
             wants: "",
-            investment: ""
+            investment: "",
+            user: JSON.parse(localStorage.getItem('user'))._id || ""
         });
     }
 

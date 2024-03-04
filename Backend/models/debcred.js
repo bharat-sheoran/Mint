@@ -14,6 +14,18 @@ const debcredSchema = new Schema({
     amount: {
         type: Number,
         required: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    month: {
+        type: String,
+        required: true
+    },
+    year: {
+        type: Number,
+        required: true
     }
 })
 

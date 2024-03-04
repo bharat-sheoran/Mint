@@ -14,7 +14,6 @@ export default function ManageListDebit() {
     const dCId = useSelector((state) => state.availaible.id);
     const debCredAvailaible = useSelector((state) => state.availaible.availaible);
     const dispatch = useDispatch();
-    //TODO: Add Needs and Wants to this Page
     //TODO: Create a Separate page for Investment
 
     const handleDelete = async (id, used) => {

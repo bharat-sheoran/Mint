@@ -5,11 +5,11 @@ const wrapAsync = require('../util/wrapAsync.js');
 const {isLoggedIn} = require("../middleware.js");
 
 router.route("/")
-    .get(isLoggedIn, wrapAsync(manageController.getManage))
-    .post(isLoggedIn, wrapAsync(manageController.addManage));
+    .get(wrapAsync(manageController.getManage))
+    .post(wrapAsync(manageController.addManage));
 
 router.route("/:dcid/:id")
-    .delete(isLoggedIn, wrapAsync(manageController.deleteManage))
-    .put(isLoggedIn, wrapAsync(manageController.editManage));
+    .delete(wrapAsync(manageController.deleteManage))
+    .put(wrapAsync(manageController.editManage));
 
 module.exports = router;

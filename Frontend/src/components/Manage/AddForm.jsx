@@ -17,7 +17,8 @@ export default function AddForm() {
         name: "",
         used: "",
         availaible: "200",
-        invested: "100"
+        invested: "100",
+        user: JSON.parse(localStorage.getItem('user'))._id || ""
     })
 
     const handleFormData = (event) => {
@@ -38,7 +39,8 @@ export default function AddForm() {
             name: "",
             used: "",
             availaible: "200",
-            invested: "100"
+            invested: "100",
+            user: JSON.parse(localStorage.getItem('user'))._id || ""
         });
     }
 

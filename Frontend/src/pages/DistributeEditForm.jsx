@@ -9,7 +9,7 @@ export default function DistributeEditForm(){
     console.log(distribute);
     const location = useLocation();
     const id = location.state?.id;
-
+    
     let data;
     distribute.filter((d)=>{
         if(d.id === id){

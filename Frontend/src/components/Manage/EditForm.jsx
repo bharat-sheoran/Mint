@@ -14,7 +14,8 @@ export default function EditForm({id , data}) {
         name: data.Name,
         used: data.Used,
         availaible: data.Availaible,
-        invested: data.Invested
+        invested: data.Invested,
+        user: JSON.parse(localStorage.getItem('user'))._id || ""
     })
 
     const handleFormData = (event)=>{

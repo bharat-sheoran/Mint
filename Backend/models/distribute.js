@@ -26,6 +26,10 @@ const distributeSchema = new Schema({
     investment: {
         type: Number,
         required: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 })
 

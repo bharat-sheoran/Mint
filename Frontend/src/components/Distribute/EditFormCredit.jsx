@@ -16,7 +16,8 @@ export default function EditFormCredit({ id, data }) {
         amount: data.Amount,
         needs: data.Needs,
         wants: data.Wants,
-        investment: data.Investment
+        investment: data.Investment,
+        user: JSON.parse(localStorage.getItem('user'))._id || ""
     })
 
     const handleFormData = (event) => {

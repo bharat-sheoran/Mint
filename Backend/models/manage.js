@@ -27,6 +27,10 @@ const manageSchema = new Schema({
     invested: {
         type: Number,
         required: true
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 });
 
