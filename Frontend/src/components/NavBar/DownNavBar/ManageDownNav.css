@@ -29,14 +29,14 @@
 }
 
 .debit-active{
-    background-color: rgb(173, 182, 233);
-    color: black;
+    background-color: #508484;
+    color: white;
     border-radius: 6px 6px 0 0;
 }
 
 .credit-active{
-    background-color: rgb(173, 182, 233);
-    color: black;
+    background-color: #508484;
+    color: white;
     border-radius: 6px 6px 0 0;
 }
 

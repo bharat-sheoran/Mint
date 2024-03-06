@@ -1,0 +1,38 @@
+
+.profile-container{
+    width: 50%;
+    height: 60%;
+    flex-direction: column;
+    position: fixed;
+    left: 25%;
+    right: 25%;
+    top: 25%;
+    background-color: rgb(241, 241, 241);
+    border-radius: 1rem;
+    border: 0.5px solid rgba(0, 0, 0, 0.403);
+    box-shadow: 0.5px 0.5px 2px black;
+    overflow: hidden;
+}
+
+.profile-user-name{
+    font-weight: 600;
+    font-size: x-large;
+    margin: 0.5rem 0 0 1rem;
+}
+
+.profile-user-username{
+    font-size: small;
+    font-weight: 500;
+    margin-left: 1.1rem;
+    margin-top: -0.7rem;
+}
+.profile-user-phone{
+    font-size: medium;
+    font-weight: 500;
+    margin-left: 1.1rem;
+}
+.profile-user-mail{
+    font-size: medium;
+    font-weight: 500;
+    margin-left: 1.1rem;
+}

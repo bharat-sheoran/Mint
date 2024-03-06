@@ -35,16 +35,15 @@ export default function AuthLogin() {
             const response = await axios.post(`http://localhost:8080/auth/login`,  signupFormData);
             if (response.status === 200) {
                 await localStorage.setItem('user', JSON.stringify(response.data));
+                console.log("Login Successfull");
                 return(
                     <Navigate to="/login" />
                 )
-                console.log("Login Successfull");
             } else {
                 console.log("Login Error");
             }
         } catch (error) {
             console.error('Error:', error);
-            Alert.alert('Error', 'An error occurred while logging in');
         }
     }
 

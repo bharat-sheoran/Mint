@@ -7,24 +7,21 @@ import NavManageButton from './NavManageButton';
 import { Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
+import Settings from '../Settings/settings';
+import { useState } from 'react';
 
 
 //TODO: Style the Login and Signup of Navbar
 export default function ManageNavBar({ activeState, user }) {
+    const [display, setDisplay] = useState(false);
 
-    async function logout(){
-        try {
-            console.log("Logout Button Clicked");
-            const response = await axios.get(`http://localhost:8080/auth/logout`);
-            if (response.status === 200) {
-                await localStorage.removeItem('user');
-                console.log("Item Deleted");
-                return(
-                    <Navigate to={'/home'} />
-                )
-            }
-        } catch (e) {
-            console.log("Error while Logging out");
+    function handleSettings(){
+        if(display){
+            console.log(display);
+            setDisplay(false);
+        }else{
+            console.log(display);
+            setDisplay(true);
         }
     }
 
@@ -35,8 +32,8 @@ export default function ManageNavBar({ activeState, user }) {
                     <Link to={'/'} className='logo link'>MINT</Link>
                 </div>
                 <div className="right">
-                    {!user ? <><Link to={'/login'} className='link'>Login</Link>
-                        <Link to={'/signup'} className='link'>Signup</Link></> : <>"User" <button onClick={logout}>Logout</button></>}
+                    {!user ? <><Link to={'/login'} className='link user-auth'>Login</Link>
+                        <Link to={'/signup'} className='link user-auth'>Signup</Link></> : <><Settings display={display?'flex':'none'}/><div onClick={handleSettings} className={`user-details ${display?'user-details-active':''}`}>{JSON.parse(localStorage.getItem('user')) !== null?JSON.parse(localStorage.getItem('user')).name.charAt(0): ""}</div></>}
                     <NavManageButton activeState={activeState} />
                 </div>
             </NavBar>
