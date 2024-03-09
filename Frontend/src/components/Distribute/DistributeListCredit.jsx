@@ -41,9 +41,9 @@ export default function DistributeListCredit() {
                             <div>{d.Date.slice(0, 10)}</div>
                             <div>{d.Name}</div>
                             <div>{d.Amount}</div>
-                            <div>{d.Needs}</div>
-                            <div>{d.Wants}</div>
-                            <div>{d.Investment}</div>
+                            <div>₹{d.Needs}</div>
+                            <div>₹{d.Wants}</div>
+                            <div>₹{d.Investment}</div>
                             <div className='distribute-action'>
                                 <div><abbr title="Delete"><FontAwesomeIcon className='delete' onClick={() => (handleDelete(d.id, d.Needs, d.Wants))} icon={faTrash} /></abbr></div>
                                 <div><Link to="/distribute/edit" state={{ id: d.id }} className='link'>

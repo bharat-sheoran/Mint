@@ -39,7 +39,7 @@ export default function ManageListDebit() {
                             <div>{d.Date.slice(0, 10)}</div>
                             <div>{d.Category}</div>
                             <div>{d.Name}</div>
-                            <div>{d.Used}</div>
+                            <div>₹{d.Used}</div>
                             <div className='manage-action'>
                                 <div><abbr title="Delete"><FontAwesomeIcon className='delete' onClick={() => (handleDelete(d.id, d.Used))} icon={faTrash} /></abbr></div>
                                 <div><Link to="/manage/edit" state={{ id: d.id }} className='link'>

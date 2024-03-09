@@ -20,23 +20,27 @@
 
 .right-down-navbar .debit:hover{
     cursor: pointer;
-    color: black;
+    border-top: 0.2px solid #508484;
+    border-left: 0.2px solid #508484;
+    border-radius: 5px;
 }
 
 .right-down-navbar .credit:hover{
     cursor: pointer;
-    color: black;
+    border-top: 0.2px solid #508484;
+    border-right: 0.2px solid #508484;
+    border-radius: 5px;
 }
 
 .debit-active{
     background-color: #508484;
-    color: white;
+    color: #e5fcff;
     border-radius: 6px 6px 0 0;
 }
 
 .credit-active{
     background-color: #508484;
-    color: white;
+    color: #e5fcff;
     border-radius: 6px 6px 0 0;
 }
 

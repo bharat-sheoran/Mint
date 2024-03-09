@@ -7,7 +7,7 @@
 
 .manage-thead{
     background-color: #508484;
-    color: white;
+    color: #e5fcff;
     padding: 0.5rem 0 0.5rem 0;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -23,7 +23,7 @@
     margin: 0.5rem 1rem 0 1rem;
     border-radius: 5px;
     background-color: #508484;
-    color: white;
+    color: #e5fcff;
     padding: 0.25rem 0 0.25rem 0;
 }
 

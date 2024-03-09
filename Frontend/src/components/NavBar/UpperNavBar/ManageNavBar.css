@@ -9,8 +9,8 @@
 }
 
 .manage-navbar{
-    background-color: #f9f9f9;
-    border-bottom: 0.7px solid #320e3b;
+    background-color: #e5fcff77;
+    border-bottom: 0.7px solid #acacde;
     box-shadow: 0 0.5px 1px black;
     padding: 0%;
     height: 3rem;
@@ -33,16 +33,17 @@
     height: 2rem;
     border-radius: 50%;
     margin-right: 1rem;
-    background-color: #6c3a5cb8;
+    background-color: #acacde;
     cursor: pointer;
-    color: #fff;
+    color: #30292f;
     font-size: larger;
     font-weight: 600;
     text-align: center;
 }
 
 .user-details-active{
-    background-color: #6c3a5c;
+    background-color: #30292f;
+    color: white;
 }
 
 .user-auth{
@@ -53,5 +54,5 @@
 
 .user-auth:hover{
     background-color: #6c3a5c;
-    color: white;
+    color: #e5fcff;
 }

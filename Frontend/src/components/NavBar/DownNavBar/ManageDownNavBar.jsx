@@ -18,7 +18,7 @@ export default function ManageDownNavBar({ handleIsDebit, isDebit }) {
         <>
             <NavBar className='justify-content-between manage-down-navbar'>
                 <div className="left-down-navbar">
-                    <b>Availaible: {availaible}</b>
+                    <b>Availaible: ₹{availaible}</b>
                 </div>
                 <div className="right-down-navbar">
                     <a className={`debit ${isDebit ? "" : "debit-active"}`} onClick={handleDebit}>Debit</a>
